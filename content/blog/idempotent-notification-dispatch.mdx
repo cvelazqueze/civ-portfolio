@@ -1,0 +1,24 @@
+---
+title: "Designing Idempotent Notification Dispatch"
+description: "How subscription snapshots, idempotency keys, and per-channel retry policies keep multi-channel notifications reliable at scale."
+date: "2025-03-12"
+category: "architecture"
+---
+
+## The problem
+
+When users update notification preferences while a batch is in flight, naive systems double-send or drop messages. Production notification platforms need **at-least-once delivery** without **at-most-once user experience**.
+
+## Architecture
+
+Separate **intent** (what to send) from **delivery** (how each channel sends it). Workers consume a queue; each message carries an idempotency key derived from `(userId, templateVersion, batchId)`.
+
+## Key decisions
+
+1. **Subscription snapshots** at enqueue time — preferences are frozen for that batch.
+2. **Per-channel dead-letter queues** — SMS failures shouldn't block email retries.
+3. **Correlation IDs** across logs — essential when debugging provider webhooks.
+
+## Lesson
+
+Model notifications as state machines on day one. Retrofitting idempotency after you have volume is expensive.

@@ -1,0 +1,26 @@
+---
+title: "Prisma Migrations Without Surprising Production"
+description: "Expand-contract patterns, backward-compatible schema changes, and when to reach for raw SQL in Prisma projects."
+date: "2025-02-28"
+category: "backend patterns"
+---
+
+## Expand-contract
+
+Never drop a column in the same deploy that stops reading it. The safe sequence:
+
+1. Add new column (nullable)
+2. Dual-write in application code
+3. Backfill data
+4. Switch reads to new column
+5. Remove old column in a later migration
+
+## Prisma-specific tips
+
+- Use `prisma migrate deploy` in CI, not `db push`, for production.
+- Review generated SQL for locking behavior on large tables.
+- Keep migrations small — one logical change per migration.
+
+## When ORM isn't enough
+
+For index creation on huge tables, use `CREATE INDEX CONCURRENTLY` via `$executeRaw` in a dedicated migration step.

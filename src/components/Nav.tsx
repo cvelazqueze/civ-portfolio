@@ -12,10 +12,10 @@ const links = [
   //   name: "skills",
   //   path: "/skills",
   // },
-  // {
-  //   name: "portfolio",
-  //   path: "/portfolio",
-  // },
+  {
+    name: "portfolio",
+    path: "/portfolio",
+  },
   // {
   //   name: "education",
   //   path: "/education",
