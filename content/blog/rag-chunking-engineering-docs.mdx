@@ -1,0 +1,20 @@
+---
+title: "RAG Chunking for Engineering Documentation"
+description: "Chunk size, overlap, and metadata strategies that improve retrieval quality for technical content—not marketing copy."
+date: "2025-01-15"
+category: "AI engineering"
+---
+
+## Why generic chunking fails
+
+Engineering docs have code blocks, diagrams, and hierarchical headings. Fixed 512-token chunks split functions across boundaries and destroy retrieval precision.
+
+## What works better
+
+- **Heading-aware splits** — never break inside a fenced code block.
+- **Metadata**: `file`, `section`, `language` on every chunk.
+- **Overlap** of 10–15% for procedural steps that span paragraphs.
+
+## Evaluation
+
+Measure recall@k on real questions your team asks—not abstract benchmarks. "How do we run migrations in CI?" is a better test than "What is Prisma?"

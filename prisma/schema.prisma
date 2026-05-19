@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  source    String   @default("portfolio")
+  createdAt DateTime @default(now())
+}
+
+model PlaygroundLog {
+  id        String   @id @default(cuid())
+  endpoint  String
+  method    String
+  status    Int
+  latencyMs Int
+  createdAt DateTime @default(now())
+}

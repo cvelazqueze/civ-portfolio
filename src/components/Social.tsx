@@ -1,9 +1,12 @@
-import { Link } from "lucide-react";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Link from "next/link";
+import { FaGithub, FaLinkedinIn, FaFilePdf } from "react-icons/fa";
 
 const socials = [
   { icon: <FaGithub />, path: "https://github.com/cvelazqueze" },
-  { icon: <FaLinkedinIn />, path: " " },
+  {
+    icon: <FaLinkedinIn />,
+    path: "https://www.linkedin.com/in/cesarvelazqueze/",
+  },
 ];
 
 const Social = ({ containerStyles, iconStyles }: any) => {

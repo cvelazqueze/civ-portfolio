@@ -8,22 +8,22 @@ const links = [
     name: "home",
     path: "/",
   },
+  // {
+  //   name: "skills",
+  //   path: "/skills",
+  // },
   {
-    name: "services",
-    path: "/services",
+    name: "portfolio",
+    path: "/portfolio",
   },
-  {
-    name: "resume",
-    path: "/resume",
-  },
-  {
-    name: "work",
-    path: "/work",
-  },
-  {
-    name: "contact",
-    path: "/contact",
-  },
+  // {
+  //   name: "education",
+  //   path: "/education",
+  // },
+  // {
+  //   name: "contact",
+  //   path: "/contact",
+  // },
 ];
 
 const Nav = () => {
