@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import { ProjectPreview } from "@/features/projects/project-preview";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/layout/section-heading";
@@ -40,23 +40,9 @@ export function ProjectsSection() {
               custom={index}
               className="group glass-panel overflow-hidden transition-colors hover:border-primary/30"
             >
-              <div className="relative aspect-video overflow-hidden bg-muted/30">
-                {project.image ? (
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/15 via-card to-accent/10">
-                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                      {project.category}
-                    </span>
-                  </div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+              <div className="relative aspect-video overflow-hidden border-b border-border/40 bg-muted/20">
+                <ProjectPreview project={project} className="min-h-full" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />
               </div>
 
               <div className="p-6">

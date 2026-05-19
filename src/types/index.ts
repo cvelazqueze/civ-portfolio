@@ -21,7 +21,6 @@ export interface ProjectCaseStudy {
   category: ProjectCategory;
   architecture: string[];
   stack: TechStackItem[];
-  image: string;
   liveUrl?: string;
   githubUrl?: string;
   featured: boolean;

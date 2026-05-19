@@ -23,7 +23,6 @@ export const projects: ProjectCaseStudy[] = [
       { name: "Express", category: "backend" },
       { name: "Argon2", category: "backend" },
     ],
-    image: "",
     liveUrl: "https://bookamenities.com",
     featured: true,
     problem:
@@ -93,7 +92,6 @@ export const projects: ProjectCaseStudy[] = [
       { name: "Vite", category: "frontend" },
       { name: "CSS Modules", category: "frontend" },
     ],
-    image: "/assets/thumbsSimpleReact.jpeg",
     liveUrl: "https://simple-react-tutorial.vercel.app",
     githubUrl: "https://github.com/cvelazqueze/simple-react-tutorial",
     featured: true,
@@ -146,7 +144,6 @@ export const projects: ProjectCaseStudy[] = [
       { name: "Framer Motion", category: "frontend" },
       { name: "OpenAI", category: "ai" },
     ],
-    image: "/assets/thumbsSimpleReact.jpeg",
     githubUrl: "https://github.com/cvelazqueze/civ-portfolio",
     featured: true,
     problem:
