@@ -10,6 +10,8 @@ export function ProjectPreview({ project, className }: ProjectPreviewProps) {
   switch (project.slug) {
     case "bookamenities":
       return <BookamenitiesPreview className={className} />;
+    case "vasectominfo":
+      return <VasectominfoPreview className={className} />;
     case "simple-react-tutorial":
       return <SimpleReactPreview className={className} />;
     case "portfolio-platform":
@@ -94,6 +96,59 @@ function BookamenitiesPreview({ className }: { className?: string }) {
       <p className="font-mono text-[9px] text-muted-foreground">
         Whole-day · multi-amenity · conflict-safe
       </p>
+    </div>
+  );
+}
+
+function VasectominfoPreview({ className }: { className?: string }) {
+  const stats = [
+    { label: "Effective", value: "99%+" },
+    { label: "Duration", value: "15–30m" },
+    { label: "Setting", value: "Outpatient" },
+  ];
+
+  return (
+    <div
+      className={cn(
+        "flex h-full w-full flex-col justify-between gap-3 bg-gradient-to-br from-slate-50 to-teal-50/80 p-4 text-slate-800",
+        className
+      )}
+    >
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-semibold tracking-tight text-teal-800">
+          VasectomInfo
+        </span>
+        <div className="flex gap-1 font-mono text-[9px]">
+          <span className="rounded bg-teal-700 px-1.5 py-0.5 text-white">EN</span>
+          <span className="rounded border border-teal-200 px-1.5 py-0.5 text-teal-700">
+            ES
+          </span>
+        </div>
+      </div>
+      <p className="text-center text-[11px] font-medium leading-snug text-slate-700">
+        Clear, evidence-based education—without fear or myths
+      </p>
+      <div className="grid grid-cols-3 gap-1.5">
+        {stats.map((s) => (
+          <div
+            key={s.label}
+            className="rounded-md border border-teal-100 bg-white/80 px-1 py-1.5 text-center"
+          >
+            <p className="text-[10px] font-bold text-teal-700">{s.value}</p>
+            <p className="text-[7px] uppercase tracking-wide text-slate-500">
+              {s.label}
+            </p>
+          </div>
+        ))}
+      </div>
+      <div className="flex gap-1">
+        <span className="flex-1 rounded-md bg-teal-700/10 px-2 py-1 text-center text-[8px] font-medium text-teal-800">
+          Myths vs reality
+        </span>
+        <span className="flex-1 rounded-md border border-teal-200 px-2 py-1 text-center text-[8px] text-teal-700">
+          Find clinics
+        </span>
+      </div>
     </div>
   );
 }
