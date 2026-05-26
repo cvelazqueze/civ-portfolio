@@ -75,6 +75,69 @@ export const projects: ProjectCaseStudy[] = [
     ],
   },
   {
+    slug: "vasectominfo",
+    title: "VasectomInfo — Evidence-Based Health Education",
+    summary:
+      "Production bilingual (EN/ES) education platform that explains vasectomy clearly—myths vs. reality, procedure steps, recovery, Mexico & U.S. access, and FAQs—without fear-based messaging.",
+    role: "Full Stack Engineer — information architecture, UI, content structure, i18n",
+    complexity: "production",
+    category: "frontend",
+    architecture: [
+      "Long-form educational sections with scannable myth/reality patterns",
+      "Bilingual navigation (EN/ES) across the full content surface",
+      "Structured procedure timeline and recovery calendar components",
+      "CMS-ready testimonials and clinic finder placeholders for future integration",
+    ],
+    stack: [
+      { name: "React", category: "frontend" },
+      { name: "TypeScript", category: "frontend" },
+      { name: "Tailwind CSS", category: "frontend" },
+      { name: "Next.js", category: "frontend" },
+    ],
+    liveUrl: "https://www.vasectominfo.com",
+    featured: true,
+    problem:
+      "Men and couples researching vasectomy encounter fear, myths, and fragmented medical information—especially across English and Spanish and between Mexico and U.S. healthcare systems.",
+    decisions: [
+      "Lead with calm, evidence-based copy—not alarmist or clinical jargon",
+      "Dedicated myth vs. reality pattern so misconceptions are addressed directly",
+      "Separate Mexico and U.S. pathways for insurance, IMSS, and access context",
+      "Structure content for future headless CMS (testimonials, clinics) without blocking launch",
+    ],
+    backendDesign: [
+      "Static-first content delivery optimized for SEO and fast global reads",
+      "Reference sections linked to IMSS, Mayo Clinic, AUA, and gob.mx sources",
+      "Clinic search and maps planned as phased integration—not fake data at launch",
+    ],
+    apiStructure: [
+      "Public educational routes; no PHI or user medical data collected",
+      "Future: provider directory API and CMS webhooks for testimonials/clinics",
+    ],
+    databaseDesign: [
+      "Launch: content as structured front-end modules",
+      "Planned: headless CMS for localized pages, FAQs, and clinic listings",
+    ],
+    scalability: [
+      "CDN-friendly static generation for high-traffic informational queries",
+      "i18n keys structured for additional locales beyond EN/ES",
+      "Print/share utilities for consultation prep without extra backend load",
+    ],
+    deployment: [
+      "Production at vasectominfo.com",
+      "Educational disclaimer and medical-reference footer on every major section",
+    ],
+    challenges: [
+      "Presenting sensitive health topics accessibly without oversimplifying risks",
+      "Balancing Mexico (IMSS/public) and U.S. (insurance/FQHC) content without overwhelming readers",
+      "Keeping legal/educational disclaimers visible without breaking reading flow",
+    ],
+    lessons: [
+      "Health education products need emotional design as much as medical accuracy",
+      "Myth-busting UI patterns reduce anxiety better than long unstructured articles",
+      "Ship credible references and clear non-medical-advice boundaries from day one",
+    ],
+  },
+  {
     slug: "simple-react-tutorial",
     title: "Simple React — Interactive Learning Surface",
     summary:
