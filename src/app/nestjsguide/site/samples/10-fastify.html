@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<!-- NestJS samples — offline page. Part of a self-contained static site; copy the whole site/ folder. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="description" content="Same Nest patterns but Fastify as the HTTP adapter (faster than Express)." />
+  <title>fastify · NestJS Samples</title>
+  <link rel="stylesheet" href="../assets/guide.css" />
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <a class="site-brand" href="../index.html">
+      <span class="site-mark">N</span>
+      <div>
+        <p class="site-kicker">NestJS samples</p>
+        <p class="site-title">Learning guide</p>
+      </div>
+    </a>
+  </header>
+
+  <div class="site-shell">
+    <aside class="site-nav" id="site-nav" aria-label="Samples navigation">
+      <div class="nav-inner">
+        <p class="nav-heading"><a href="../index.html">Home</a> · <a href="../glossary.html">Glossary</a></p>
+        <p class="nav-heading">All samples (36)</p>
+        <ol class="toc-list"><li class=""><a class="toc-link" href="../samples/01-cats-app.html"><span class="toc-id">01-cats-app</span><span class="toc-title">cats app</span></a></li>
+<li class=""><a class="toc-link" href="../samples/02-gateways.html"><span class="toc-id">02-gateways</span><span class="toc-title">gateways</span></a></li>
+<li class=""><a class="toc-link" href="../samples/03-microservices.html"><span class="toc-id">03-microservices</span><span class="toc-title">microservices</span></a></li>
+<li class=""><a class="toc-link" href="../samples/04-grpc.html"><span class="toc-id">04-grpc</span><span class="toc-title">grpc</span></a></li>
+<li class=""><a class="toc-link" href="../samples/05-sql-typeorm.html"><span class="toc-id">05-sql-typeorm</span><span class="toc-title">sql typeorm</span></a></li>
+<li class=""><a class="toc-link" href="../samples/06-mongoose.html"><span class="toc-id">06-mongoose</span><span class="toc-title">mongoose</span></a></li>
+<li class=""><a class="toc-link" href="../samples/07-sequelize.html"><span class="toc-id">07-sequelize</span><span class="toc-title">sequelize</span></a></li>
+<li class=""><a class="toc-link" href="../samples/08-webpack.html"><span class="toc-id">08-webpack</span><span class="toc-title">webpack</span></a></li>
+<li class=""><a class="toc-link" href="../samples/09-babel-example.html"><span class="toc-id">09-babel-example</span><span class="toc-title">babel example</span></a></li>
+<li class=""><a class="toc-link is-active" href="../samples/10-fastify.html"><span class="toc-id">10-fastify</span><span class="toc-title">fastify</span></a></li>
+<li class=""><a class="toc-link" href="../samples/11-swagger.html"><span class="toc-id">11-swagger</span><span class="toc-title">swagger</span></a></li>
+<li class=""><a class="toc-link" href="../samples/12-graphql-schema-first.html"><span class="toc-id">12-graphql-schema-first</span><span class="toc-title">graphql schema first</span></a></li>
+<li class=""><a class="toc-link" href="../samples/13-mongo-typeorm.html"><span class="toc-id">13-mongo-typeorm</span><span class="toc-title">mongo typeorm</span></a></li>
+<li class=""><a class="toc-link" href="../samples/14-mongoose-base.html"><span class="toc-id">14-mongoose-base</span><span class="toc-title">mongoose base</span></a></li>
+<li class=""><a class="toc-link" href="../samples/15-mvc.html"><span class="toc-id">15-mvc</span><span class="toc-title">mvc</span></a></li>
+<li class=""><a class="toc-link" href="../samples/16-gateways-ws.html"><span class="toc-id">16-gateways-ws</span><span class="toc-title">gateways ws</span></a></li>
+<li class=""><a class="toc-link" href="../samples/17-mvc-fastify.html"><span class="toc-id">17-mvc-fastify</span><span class="toc-title">mvc fastify</span></a></li>
+<li class=""><a class="toc-link" href="../samples/18-context.html"><span class="toc-id">18-context</span><span class="toc-title">context</span></a></li>
+<li class=""><a class="toc-link" href="../samples/19-auth-jwt.html"><span class="toc-id">19-auth-jwt</span><span class="toc-title">auth jwt</span></a></li>
+<li class=""><a class="toc-link" href="../samples/20-cache.html"><span class="toc-id">20-cache</span><span class="toc-title">cache</span></a></li>
+<li class=""><a class="toc-link" href="../samples/21-serializer.html"><span class="toc-id">21-serializer</span><span class="toc-title">serializer</span></a></li>
+<li class=""><a class="toc-link" href="../samples/22-graphql-prisma.html"><span class="toc-id">22-graphql-prisma</span><span class="toc-title">graphql prisma</span></a></li>
+<li class=""><a class="toc-link" href="../samples/23-graphql-code-first.html"><span class="toc-id">23-graphql-code-first</span><span class="toc-title">graphql code first</span></a></li>
+<li class=""><a class="toc-link" href="../samples/24-serve-static.html"><span class="toc-id">24-serve-static</span><span class="toc-title">serve static</span></a></li>
+<li class=""><a class="toc-link" href="../samples/25-dynamic-modules.html"><span class="toc-id">25-dynamic-modules</span><span class="toc-title">dynamic modules</span></a></li>
+<li class=""><a class="toc-link" href="../samples/26-queues.html"><span class="toc-id">26-queues</span><span class="toc-title">queues</span></a></li>
+<li class=""><a class="toc-link" href="../samples/27-scheduling.html"><span class="toc-id">27-scheduling</span><span class="toc-title">scheduling</span></a></li>
+<li class=""><a class="toc-link" href="../samples/28-sse.html"><span class="toc-id">28-sse</span><span class="toc-title">sse</span></a></li>
+<li class=""><a class="toc-link" href="../samples/29-file-upload.html"><span class="toc-id">29-file-upload</span><span class="toc-title">file upload</span></a></li>
+<li class=""><a class="toc-link" href="../samples/30-event-emitter.html"><span class="toc-id">30-event-emitter</span><span class="toc-title">event emitter</span></a></li>
+<li class=""><a class="toc-link" href="../samples/31-graphql-federation-code-first.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-title">graphql federation code first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/31-graphql-federation-code-first/gateway.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/31-graphql-federation-code-first/users-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/31-graphql-federation-code-first/posts-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="../samples/32-graphql-federation-schema-first.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-title">graphql federation schema first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/32-graphql-federation-schema-first/gateway.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/32-graphql-federation-schema-first/users-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/32-graphql-federation-schema-first/posts-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="../samples/33-graphql-mercurius.html"><span class="toc-id">33-graphql-mercurius</span><span class="toc-title">graphql mercurius</span></a></li>
+<li class=""><a class="toc-link" href="../samples/34-using-esm-packages.html"><span class="toc-id">34-using-esm-packages</span><span class="toc-title">using esm packages</span></a></li>
+<li class=""><a class="toc-link" href="../samples/35-use-esm-package-after-node22.html"><span class="toc-id">35-use-esm-package-after-node22</span><span class="toc-title">use esm package after node22</span></a></li>
+<li class=""><a class="toc-link" href="../samples/36-hmr-esm.html"><span class="toc-id">36-hmr-esm</span><span class="toc-title">hmr esm</span></a></li></ol>
+      </div>
+    </aside>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <main class="site-main" id="top">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><span>10-fastify</span></nav>
+      
+        <header class="sample-header">
+          <p class="sample-label">10-fastify</p>
+          <h1>fastify</h1>
+        </header>
+        
+    <section class="guide-panel" aria-labelledby="guide-heading">
+      <h2 id="guide-heading">Understanding this sample</h2>
+      
+      <div class="guide-kind">
+        <p class="guide-kind-label">Application type</p>
+        <p>Open `main.ts` (or the sample README) to see how this app bootstraps.</p>
+        <p class="guide-why"><strong>When this shape is used:</strong> Bootstrap code is the source of truth for transports and adapters.</p>
+      </div>
+      <dl class="guide-facts">
+        <div><dt>Bootstrap</dt><dd><code>Unknown</code></dd></div>
+        <div><dt>Inventory kind</dt><dd>Unknown</dd></div>
+      </dl>
+      <p><strong>Default port:</strong> <code>3000</code></p><p><strong>Also configured:</strong> HTTP adapter: **Fastify**</p><p><strong>Global setup in <code>main.ts</code>:</strong> `ValidationPipe` (global, `@nestjs/common`)</p>
+      <p>In the inventory below, <span class="pill pill--wired">Wired</span> (6) means Nest actively loads that class; <span class="pill pill--example">Example</span> (3) means the file is reference-only until you register it in a module or decorator.</p>
+      <p class="guide-more">Related concepts: <a href="../glossary.html#nestjs">application type explained</a> · <a href="../glossary.html#wired">Wired vs Example</a> · <a href="../glossary.html#decorator">Why decorators?</a> · <a href="../glossary.html#section-network">Networking acronyms (TCP, RPC…)</a></p>
+    </section>
+        <div class="markdown-body sample-content"><h1>10-fastify — NestJS Sample</h1>
+<p>Same architectural patterns as <code>01-cats-app</code>, but running on the <strong>Fastify adapter</strong> instead of Express. Demonstrates guards, interceptors, pipes, and middleware examples with <code>@nestjs/platform-fastify</code>.</p>
+<h2>Quick start</h2>
+<pre><code class="language-bash">cd sample/10-fastify
+npm install
+npm run start:dev
+</code></pre>
+<p>App listens on <strong><a href="http://localhost:3000">http://localhost:3000</a></strong>.</p>
+<blockquote>
+<p><strong>Remote machines:</strong> you may need <code>await app.listen(3000, &#39;0.0.0.0&#39;)</code> — see <a href="https://docs.nestjs.com/techniques/performance#adapter">Nest performance docs</a>.</p>
+</blockquote>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/cats</code></td>
+<td>List cats (wrapped in <code>{ data: ... }</code> by interceptor)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/cats</code></td>
+<td>Create cat (<code>@Roles(&#39;admin&#39;)</code> — needs <code>request.user</code>)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/cats/:id</code></td>
+<td>Stub; parses <code>:id</code> with custom <code>ParseIntPipe</code></td>
+</tr>
+</tbody></table></div>
+<hr>
+<!-- CORE_INVENTORY_START -->
+<h2>Core elements inventory</h2>
+<blockquote>
+<p>Generated from <code>10-fastify/src</code>. <strong>Wired</strong> = registered in a module or applied globally. <strong>Example</strong> = present in code but not registered.</p>
+</blockquote>
+<h3>Application type</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bootstrap</strong></td>
+<td><code>Unknown</code></td>
+</tr>
+<tr>
+<td><strong>Kind</strong></td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><strong>Entry file</strong></td>
+<td><code>main.ts</code></td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>3000</td>
+</tr>
+</tbody></table></div>
+<p><strong>Stack notes:</strong> HTTP adapter: <strong>Fastify</strong></p>
+<p><strong>Global setup (<code>main.ts</code>):</strong> <code>ValidationPipe</code> (global, <code>@nestjs/common</code>)</p>
+<h3>Modules (3)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Path</th>
+<th>Imports</th>
+<th>Controllers</th>
+<th>Providers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AppModule</code></td>
+<td><code>src/app.module.ts</code></td>
+<td><code>CatsModule</code>, <code>CoreModule</code></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>CatsModule</code></td>
+<td><code>src/cats/cats.module.ts</code></td>
+<td>—</td>
+<td><code>CatsController</code></td>
+<td><code>CatsService</code></td>
+</tr>
+<tr>
+<td><code>CoreModule</code></td>
+<td><code>src/core/core.module.ts</code></td>
+<td>—</td>
+<td>—</td>
+<td><code>TransformInterceptor</code>, <code>LoggingInterceptor</code></td>
+</tr>
+</tbody></table></div>
+<h3>Controllers (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CatsController</code></td>
+<td><code>src/cats/cats.controller.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Providers / services (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CatsService</code></td>
+<td><code>src/cats/cats.service.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Guards (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>RolesGuard</code></td>
+<td><code>src/common/guards/roles.guard.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Interceptors (3)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ExceptionInterceptor</code></td>
+<td><code>src/common/interceptors/exception.interceptor.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+<tr>
+<td><code>LoggingInterceptor</code></td>
+<td><code>src/core/interceptors/logging.interceptor.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+<tr>
+<td><code>TransformInterceptor</code></td>
+<td><code>src/core/interceptors/transform.interceptor.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Pipes (2)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ParseIntPipe</code></td>
+<td><code>src/common/pipes/parse-int.pipe.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+<tr>
+<td><code>ValidationPipe</code></td>
+<td><code>src/common/pipes/validation.pipe.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+</tbody></table></div>
+<h3>Exception filters (0)</h3>
+<p><em>None</em></p>
+<h3>Middleware (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>LoggerMiddleware</code></td>
+<td><code>src/common/middleware/logger.middleware.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+</tbody></table></div>
+<h3>Decorators used (11)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Decorators</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>@nestjs (@nestjs/common)</strong></td>
+<td><code>@Body</code>, <code>@Controller</code>, <code>@Get</code>, <code>@Injectable</code>, <code>@Module</code>, <code>@Param</code>, <code>@Post</code>, <code>@UseGuards</code></td>
+</tr>
+<tr>
+<td><strong>User-created</strong></td>
+<td><code>@Roles</code></td>
+</tr>
+<tr>
+<td><strong>class-validator</strong></td>
+<td><code>@IsInt</code>, <code>@IsString</code></td>
+</tr>
+</tbody></table></div>
+<hr>
+<!-- CORE_INVENTORY_END -->
+<h2>Project structure</h2>
+<pre><code>sample/10-fastify/
+├── src/
+│   ├── main.ts                       # FastifyAdapter + global ValidationPipe
+│   ├── app.module.ts
+│   ├── cats/                         # Feature module (active)
+│   ├── core/                         # Global interceptors (active)
+│   └── common/                       # Guards, pipes, etc. (mixed)
+</code></pre>
+<p>Structure mirrors <code>01-cats-app</code> — compare the two samples to see Express vs Fastify bootstrap differences.</p>
+<hr>
+<h2>How the app boots</h2>
+<figure class="diagram"><figcaption>Diagram</figcaption><div class="diagram-canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 624.8000000000001 556.8" width="624.8000000000001" height="556.8" role="img"><rect width="624.8000000000001" height="556.8" fill="#333333"></rect><defs><marker id="mermaid-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d3d3d3"></path></marker><marker id="mermaid-arrow-open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-cross" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 2 2 L 8 8 M 8 2 L 2 8" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-circle" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><circle cx="5" cy="5" r="4" fill="#d3d3d3"></circle></marker><linearGradient id="mermaid-grad-default" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-decision" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-rounded" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><radialGradient id="mermaid-grad-circle" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></radialGradient><linearGradient id="mermaid-grad-cylinder" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><linearGradient id="mermaid-grad-subroutine" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><filter id="mermaid-shadow-default" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-decision" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-rounded" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-circle" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-cylinder" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-subroutine" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter></defs><g><path d="M 513.4000000000001,52.8 L 513.4000000000001,189.6" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="403.56000000000006" y="109.63999999999999" width="219.68" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="513.4000000000001" y="121.19999999999999" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">NestFactory + FastifyAdapter</text></g></g><g><path d="M 496.8,230.39999999999998 L 496.80000000000007,240.39999999999998 L 305.20000000000005,240.39999999999998 L 305.20000000000005,290.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 530,230.39999999999998 L 530,290.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 485.80000000000007,52.8 L 485.80000000000007,62.8 L 331.80000000000007,62.8 L 331.80000000000007,189.6" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="295.18000000000006" y="51.239999999999995" width="227.23999999999998" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="408.80000000000007" y="62.8" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">useGlobalPipes ValidationPipe</text></g></g><g><path d="M 323.20000000000005,331.2 L 323.20000000000005,391.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 287.20000000000005,331.2 L 287.20000000000005,341.2 L 99.60000000000002,341.2 L 99.60000000000001,391.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 530,331.2 L 530,391.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 530,432 L 530.0000000000001,492" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g filter="url(#mermaid-shadow-default)"><rect x="458.20000000000005" y="12" width="82.80000000000001" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="499.6" y="32.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">main.ts</text></g><g filter="url(#mermaid-shadow-default)"><rect x="463.6" y="189.6" width="99.60000000000001" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="513.4" y="210" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">AppModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="251.20000000000005" y="290.4" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="305.20000000000005" y="310.79999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CoreModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="476.00000000000006" y="290.4" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="530" y="310.79999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="240.00000000000006" y="189.6" width="183.6" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="331.80000000000007" y="210" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Nest ValidationPipe</text></g><g filter="url(#mermaid-shadow-default)"><rect x="227.20000000000005" y="391.2" width="192" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="323.20000000000005" y="411.59999999999997" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">TransformInterceptor</text></g><g filter="url(#mermaid-shadow-default)"><rect x="12" y="391.2" width="175.20000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="99.60000000000001" y="411.59999999999997" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">LoggingInterceptor</text></g><g filter="url(#mermaid-shadow-default)"><rect x="459.20000000000005" y="391.2" width="141.60000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="530" y="411.59999999999997" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsController</text></g><g filter="url(#mermaid-shadow-default)"><rect x="471.80000000000007" y="492" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="530.0000000000001" y="512.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsService</text></g></svg></div></figure>
+
+
+
+<p>Key difference from <code>01-cats-app</code>:</p>
+<pre><code class="language-typescript">const app = await NestFactory.create(AppModule, new FastifyAdapter());
+</code></pre>
+<hr>
+<h2>Module graph</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Origin</th>
+<th>Registered in</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AppModule</code></td>
+<td><strong>User</strong></td>
+<td>Root</td>
+<td>Composes modules</td>
+</tr>
+<tr>
+<td><code>CoreModule</code></td>
+<td><strong>User</strong></td>
+<td><code>AppModule.imports</code></td>
+<td>Global interceptors</td>
+</tr>
+<tr>
+<td><code>CatsModule</code></td>
+<td><strong>User</strong></td>
+<td><code>AppModule.imports</code></td>
+<td>Cats feature</td>
+</tr>
+<tr>
+<td><code>CatsController</code></td>
+<td><strong>User</strong></td>
+<td><code>CatsModule.controllers</code></td>
+<td>HTTP routes</td>
+</tr>
+<tr>
+<td><code>CatsService</code></td>
+<td><strong>User</strong></td>
+<td><code>CatsModule.providers</code></td>
+<td>In-memory store</td>
+</tr>
+<tr>
+<td><code>RolesGuard</code></td>
+<td><strong>User</strong></td>
+<td><code>@UseGuards</code> on controller</td>
+<td>Reads <code>@Roles</code> metadata</td>
+</tr>
+<tr>
+<td><code>Roles</code> decorator</td>
+<td><strong>User</strong></td>
+<td>—</td>
+<td><code>SetMetadata(&#39;roles&#39;, roles)</code></td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2>Decorator glossary (<code>@</code>)</h2>
+<h3>NestJS</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator</th>
+<th>Used on</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Module</code></td>
+<td>Modules</td>
+<td>Module declaration</td>
+</tr>
+<tr>
+<td><code>@Controller(&#39;cats&#39;)</code></td>
+<td><code>CatsController</code></td>
+<td>Route prefix</td>
+</tr>
+<tr>
+<td><code>@Post</code>, <code>@Get</code></td>
+<td>Handlers</td>
+<td>HTTP verbs</td>
+</tr>
+<tr>
+<td><code>@Body</code>, <code>@Param</code></td>
+<td>Parameters</td>
+<td>Body / route param</td>
+</tr>
+<tr>
+<td><code>@UseGuards(RolesGuard)</code></td>
+<td>Controller</td>
+<td>Applies guard</td>
+</tr>
+<tr>
+<td><code>@Injectable</code></td>
+<td>Services, guards, pipes, interceptors</td>
+<td>DI marker</td>
+</tr>
+</tbody></table></div>
+<h3>class-validator (third-party)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator</th>
+<th>Used on</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@IsString</code>, <code>@IsInt</code></td>
+<td><code>CreateCatDto</code></td>
+<td>DTO validation</td>
+</tr>
+</tbody></table></div>
+<h3>User-created</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator / helper</th>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Roles(...)</code></td>
+<td><code>common/decorators/roles.decorator.ts</code></td>
+<td><code>SetMetadata(&#39;roles&#39;, roles)</code></td>
+</tr>
+</tbody></table></div>
+<p>Unlike <code>01-cats-app</code>, this sample uses <code>SetMetadata</code> instead of <code>Reflector.createDecorator</code>.</p>
+<hr>
+<h2>Wired vs example-only</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Wired</th>
+<th>Example-only</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fastify adapter, global <code>ValidationPipe</code></td>
+<td><code>LoggerMiddleware</code> (not applied)</td>
+</tr>
+<tr>
+<td><code>CoreModule</code> interceptors</td>
+<td><code>ExceptionInterceptor</code> (not registered)</td>
+</tr>
+<tr>
+<td><code>RolesGuard</code> on controller</td>
+<td>Custom <code>ValidationPipe</code> in <code>common/</code> (superseded by global)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>findOne</code> stub — no service call</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2>Mental model</h2>
+<p>Fastify is a faster HTTP framework; Nest abstracts it via <strong><code>FastifyAdapter</code></strong>. Everything else (modules, DI, decorators) works the same as Express-based Nest apps.</p>
+<hr>
+<h2>Dependencies</h2>
+<p><code>@nestjs/platform-fastify</code>, <code>class-validator</code>, <code>class-transformer</code></p>
+</div>
+      
+    <nav class="page-nav" aria-label="Sample pagination">
+      <a class="page-nav-link" href="../samples/09-babel-example.html"><span class="page-nav-dir">← Previous</span><span class="page-nav-title">09-babel-example</span></a>
+      <a class="page-nav-link" href="../samples/11-swagger.html"><span class="page-nav-dir">Next →</span><span class="page-nav-title">11-swagger</span></a>
+    </nav>
+    </main>
+  </div>
+
+  <a href="#top" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+  <script src="../assets/guide.js"></script>
+</body>
+</html>

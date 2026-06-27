@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<!-- NestJS samples — offline page. Part of a self-contained static site; copy the whole site/ folder. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="description" content="The canonical “first Nest app”: modules, controllers, services, guards, pipes, and interceptors — with clear wired vs example files." />
+  <title>cats app · NestJS Samples</title>
+  <link rel="stylesheet" href="../assets/guide.css" />
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <a class="site-brand" href="../index.html">
+      <span class="site-mark">N</span>
+      <div>
+        <p class="site-kicker">NestJS samples</p>
+        <p class="site-title">Learning guide</p>
+      </div>
+    </a>
+  </header>
+
+  <div class="site-shell">
+    <aside class="site-nav" id="site-nav" aria-label="Samples navigation">
+      <div class="nav-inner">
+        <p class="nav-heading"><a href="../index.html">Home</a> · <a href="../glossary.html">Glossary</a></p>
+        <p class="nav-heading">All samples (36)</p>
+        <ol class="toc-list"><li class=""><a class="toc-link is-active" href="../samples/01-cats-app.html"><span class="toc-id">01-cats-app</span><span class="toc-title">cats app</span></a></li>
+<li class=""><a class="toc-link" href="../samples/02-gateways.html"><span class="toc-id">02-gateways</span><span class="toc-title">gateways</span></a></li>
+<li class=""><a class="toc-link" href="../samples/03-microservices.html"><span class="toc-id">03-microservices</span><span class="toc-title">microservices</span></a></li>
+<li class=""><a class="toc-link" href="../samples/04-grpc.html"><span class="toc-id">04-grpc</span><span class="toc-title">grpc</span></a></li>
+<li class=""><a class="toc-link" href="../samples/05-sql-typeorm.html"><span class="toc-id">05-sql-typeorm</span><span class="toc-title">sql typeorm</span></a></li>
+<li class=""><a class="toc-link" href="../samples/06-mongoose.html"><span class="toc-id">06-mongoose</span><span class="toc-title">mongoose</span></a></li>
+<li class=""><a class="toc-link" href="../samples/07-sequelize.html"><span class="toc-id">07-sequelize</span><span class="toc-title">sequelize</span></a></li>
+<li class=""><a class="toc-link" href="../samples/08-webpack.html"><span class="toc-id">08-webpack</span><span class="toc-title">webpack</span></a></li>
+<li class=""><a class="toc-link" href="../samples/09-babel-example.html"><span class="toc-id">09-babel-example</span><span class="toc-title">babel example</span></a></li>
+<li class=""><a class="toc-link" href="../samples/10-fastify.html"><span class="toc-id">10-fastify</span><span class="toc-title">fastify</span></a></li>
+<li class=""><a class="toc-link" href="../samples/11-swagger.html"><span class="toc-id">11-swagger</span><span class="toc-title">swagger</span></a></li>
+<li class=""><a class="toc-link" href="../samples/12-graphql-schema-first.html"><span class="toc-id">12-graphql-schema-first</span><span class="toc-title">graphql schema first</span></a></li>
+<li class=""><a class="toc-link" href="../samples/13-mongo-typeorm.html"><span class="toc-id">13-mongo-typeorm</span><span class="toc-title">mongo typeorm</span></a></li>
+<li class=""><a class="toc-link" href="../samples/14-mongoose-base.html"><span class="toc-id">14-mongoose-base</span><span class="toc-title">mongoose base</span></a></li>
+<li class=""><a class="toc-link" href="../samples/15-mvc.html"><span class="toc-id">15-mvc</span><span class="toc-title">mvc</span></a></li>
+<li class=""><a class="toc-link" href="../samples/16-gateways-ws.html"><span class="toc-id">16-gateways-ws</span><span class="toc-title">gateways ws</span></a></li>
+<li class=""><a class="toc-link" href="../samples/17-mvc-fastify.html"><span class="toc-id">17-mvc-fastify</span><span class="toc-title">mvc fastify</span></a></li>
+<li class=""><a class="toc-link" href="../samples/18-context.html"><span class="toc-id">18-context</span><span class="toc-title">context</span></a></li>
+<li class=""><a class="toc-link" href="../samples/19-auth-jwt.html"><span class="toc-id">19-auth-jwt</span><span class="toc-title">auth jwt</span></a></li>
+<li class=""><a class="toc-link" href="../samples/20-cache.html"><span class="toc-id">20-cache</span><span class="toc-title">cache</span></a></li>
+<li class=""><a class="toc-link" href="../samples/21-serializer.html"><span class="toc-id">21-serializer</span><span class="toc-title">serializer</span></a></li>
+<li class=""><a class="toc-link" href="../samples/22-graphql-prisma.html"><span class="toc-id">22-graphql-prisma</span><span class="toc-title">graphql prisma</span></a></li>
+<li class=""><a class="toc-link" href="../samples/23-graphql-code-first.html"><span class="toc-id">23-graphql-code-first</span><span class="toc-title">graphql code first</span></a></li>
+<li class=""><a class="toc-link" href="../samples/24-serve-static.html"><span class="toc-id">24-serve-static</span><span class="toc-title">serve static</span></a></li>
+<li class=""><a class="toc-link" href="../samples/25-dynamic-modules.html"><span class="toc-id">25-dynamic-modules</span><span class="toc-title">dynamic modules</span></a></li>
+<li class=""><a class="toc-link" href="../samples/26-queues.html"><span class="toc-id">26-queues</span><span class="toc-title">queues</span></a></li>
+<li class=""><a class="toc-link" href="../samples/27-scheduling.html"><span class="toc-id">27-scheduling</span><span class="toc-title">scheduling</span></a></li>
+<li class=""><a class="toc-link" href="../samples/28-sse.html"><span class="toc-id">28-sse</span><span class="toc-title">sse</span></a></li>
+<li class=""><a class="toc-link" href="../samples/29-file-upload.html"><span class="toc-id">29-file-upload</span><span class="toc-title">file upload</span></a></li>
+<li class=""><a class="toc-link" href="../samples/30-event-emitter.html"><span class="toc-id">30-event-emitter</span><span class="toc-title">event emitter</span></a></li>
+<li class=""><a class="toc-link" href="../samples/31-graphql-federation-code-first.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-title">graphql federation code first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/31-graphql-federation-code-first/gateway.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/31-graphql-federation-code-first/users-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/31-graphql-federation-code-first/posts-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="../samples/32-graphql-federation-schema-first.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-title">graphql federation schema first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/32-graphql-federation-schema-first/gateway.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/32-graphql-federation-schema-first/users-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../samples/32-graphql-federation-schema-first/posts-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="../samples/33-graphql-mercurius.html"><span class="toc-id">33-graphql-mercurius</span><span class="toc-title">graphql mercurius</span></a></li>
+<li class=""><a class="toc-link" href="../samples/34-using-esm-packages.html"><span class="toc-id">34-using-esm-packages</span><span class="toc-title">using esm packages</span></a></li>
+<li class=""><a class="toc-link" href="../samples/35-use-esm-package-after-node22.html"><span class="toc-id">35-use-esm-package-after-node22</span><span class="toc-title">use esm package after node22</span></a></li>
+<li class=""><a class="toc-link" href="../samples/36-hmr-esm.html"><span class="toc-id">36-hmr-esm</span><span class="toc-title">hmr esm</span></a></li></ol>
+      </div>
+    </aside>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <main class="site-main" id="top">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><span>01-cats-app</span></nav>
+      
+        <header class="sample-header">
+          <p class="sample-label">01-cats-app</p>
+          <h1>cats app</h1>
+        </header>
+        
+    <section class="guide-panel" aria-labelledby="guide-heading">
+      <h2 id="guide-heading">Understanding this sample</h2>
+      
+      <div class="guide-kind">
+        <p class="guide-kind-label">Standalone HTTP application</p>
+        <p>This sample starts a normal web server. External clients reach it via URLs (browser, curl, mobile app).</p>
+        <p class="guide-why"><strong>When this shape is used:</strong> Best when you expose a REST/JSON API, MVC pages, Swagger, or file uploads from one deployable Node app.</p>
+      </div>
+      <dl class="guide-facts">
+        <div><dt>Bootstrap</dt><dd><code>NestFactory.create(AppModule)</code></dd></div>
+        <div><dt>Inventory kind</dt><dd>HTTP server</dd></div>
+      </dl>
+      <p><strong>Default port:</strong> <code>3000</code></p><p><strong>Global setup in <code>main.ts</code>:</strong> `ValidationPipe` (global, `@nestjs/common`)</p>
+      <p>In the inventory below, <span class="pill pill--wired">Wired</span> (6) means Nest actively loads that class; <span class="pill pill--example">Example</span> (5) means the file is reference-only until you register it in a module or decorator.</p>
+      <p class="guide-more">Related concepts: <a href="../glossary.html#http-server">application type explained</a> · <a href="../glossary.html#wired">Wired vs Example</a> · <a href="../glossary.html#decorator">Why decorators?</a> · <a href="../glossary.html#section-network">Networking acronyms (TCP, RPC…)</a></p>
+    </section>
+        <div class="markdown-body sample-content"><h1>01-cats-app — NestJS Sample</h1>
+<p>A minimal NestJS application that demonstrates modules, controllers, services, dependency injection, and common cross-cutting concerns (guards, pipes, interceptors, filters, middleware). The <strong>cats feature is fully wired</strong>; several files under <code>src/common/</code> are <strong>reference implementations</strong> not registered in any module yet.</p>
+<h2>Quick start</h2>
+<pre><code class="language-bash">cd sample/01-cats-app
+npm install
+npm run start:dev
+</code></pre>
+<p>App listens on <strong><a href="http://localhost:3000">http://localhost:3000</a></strong>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GET</code></td>
+<td><code>/cats</code></td>
+<td>List all cats (wrapped by <code>TransformInterceptor</code>)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/cats</code></td>
+<td>Create a cat (requires <code>admin</code> role via <code>RolesGuard</code>)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/cats/:id</code></td>
+<td>Stub route; parses <code>:id</code> with custom <code>ParseIntPipe</code></td>
+</tr>
+</tbody></table></div>
+<hr>
+<!-- CORE_INVENTORY_START -->
+<h2>Core elements inventory</h2>
+<blockquote>
+<p>Generated from <code>01-cats-app/src</code>. <strong>Wired</strong> = registered in a module or applied globally. <strong>Example</strong> = present in code but not registered.</p>
+</blockquote>
+<h3>Application type</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bootstrap</strong></td>
+<td><code>NestFactory.create(AppModule)</code></td>
+</tr>
+<tr>
+<td><strong>Kind</strong></td>
+<td>HTTP server</td>
+</tr>
+<tr>
+<td><strong>Entry file</strong></td>
+<td><code>main.ts</code></td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>3000</td>
+</tr>
+</tbody></table></div>
+<p><strong>Global setup (<code>main.ts</code>):</strong> <code>ValidationPipe</code> (global, <code>@nestjs/common</code>)</p>
+<h3>Modules (3)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Path</th>
+<th>Imports</th>
+<th>Controllers</th>
+<th>Providers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AppModule</code></td>
+<td><code>src/app.module.ts</code></td>
+<td><code>CoreModule</code>, <code>CatsModule</code></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>CatsModule</code></td>
+<td><code>src/cats/cats.module.ts</code></td>
+<td>—</td>
+<td><code>CatsController</code></td>
+<td><code>CatsService</code></td>
+</tr>
+<tr>
+<td><code>CoreModule</code></td>
+<td><code>src/core/core.module.ts</code></td>
+<td>—</td>
+<td>—</td>
+<td><code>TransformInterceptor</code>, <code>LoggingInterceptor</code></td>
+</tr>
+</tbody></table></div>
+<h3>Controllers (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CatsController</code></td>
+<td><code>src/cats/cats.controller.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Providers / services (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CatsService</code></td>
+<td><code>src/cats/cats.service.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Guards (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>RolesGuard</code></td>
+<td><code>src/common/guards/roles.guard.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Interceptors (4)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ErrorsInterceptor</code></td>
+<td><code>src/common/interceptors/exception.interceptor.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+<tr>
+<td><code>LoggingInterceptor</code></td>
+<td><code>src/core/interceptors/logging.interceptor.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+<tr>
+<td><code>TimeoutInterceptor</code></td>
+<td><code>src/common/interceptors/timeout.interceptor.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+<tr>
+<td><code>TransformInterceptor</code></td>
+<td><code>src/core/interceptors/transform.interceptor.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Pipes (2)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ParseIntPipe</code></td>
+<td><code>src/common/pipes/parse-int.pipe.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+<tr>
+<td><code>ValidationPipe</code></td>
+<td><code>src/common/pipes/validation.pipe.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+</tbody></table></div>
+<h3>Exception filters (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>HttpExceptionFilter</code></td>
+<td><code>src/common/filters/http-exception.filter.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+</tbody></table></div>
+<h3>Middleware (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>LoggerMiddleware</code></td>
+<td><code>src/common/middleware/logger.middleware.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+</tbody></table></div>
+<h3>Decorators used (12)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Decorators</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>@nestjs (@nestjs/common)</strong></td>
+<td><code>@Body</code>, <code>@Catch</code>, <code>@Controller</code>, <code>@Get</code>, <code>@Injectable</code>, <code>@Module</code>, <code>@Param</code>, <code>@Post</code>, <code>@UseGuards</code></td>
+</tr>
+<tr>
+<td><strong>User-created</strong></td>
+<td><code>@Roles</code></td>
+</tr>
+<tr>
+<td><strong>class-validator</strong></td>
+<td><code>@IsInt</code>, <code>@IsString</code></td>
+</tr>
+</tbody></table></div>
+<hr>
+<!-- CORE_INVENTORY_END -->
+<h2>Project structure</h2>
+<pre><code>sample/01-cats-app/
+├── src/
+│   ├── main.ts                          # Bootstrap: create app, global pipes, listen
+│   ├── app.module.ts                    # Root module
+│   ├── cats/                            # Feature module (active)
+│   │   ├── cats.module.ts
+│   │   ├── cats.controller.ts
+│   │   ├── cats.service.ts
+│   │   ├── dto/create-cat.dto.ts
+│   │   └── interfaces/cat.interface.ts
+│   ├── core/                            # Global cross-cutting (active)
+│   │   ├── core.module.ts
+│   │   └── interceptors/
+│   │       ├── logging.interceptor.ts
+│   │       └── transform.interceptor.ts
+│   └── common/                          # Reusable building blocks (mixed: some used, some examples)
+│       ├── decorators/roles.decorator.ts
+│       ├── guards/roles.guard.ts
+│       ├── pipes/
+│       │   ├── parse-int.pipe.ts        # Used in controller
+│       │   └── validation.pipe.ts       # Example only (app uses Nest built-in)
+│       ├── interceptors/
+│       │   ├── timeout.interceptor.ts   # Example only
+│       │   └── exception.interceptor.ts # Example only
+│       ├── filters/http-exception.filter.ts  # Example only
+│       └── middleware/logger.middleware.ts   # Example only
+├── e2e/cats/cats.e2e-spec.ts
+└── package.json
+</code></pre>
+<hr>
+<h2>How the app boots</h2>
+<figure class="diagram"><figcaption>Diagram</figcaption><div class="diagram-canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 942.4 633.5999999999999" width="942.4" height="633.5999999999999" role="img"><rect width="942.4" height="633.5999999999999" fill="#333333"></rect><defs><marker id="mermaid-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d3d3d3"></path></marker><marker id="mermaid-arrow-open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-cross" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 2 2 L 8 8 M 8 2 L 2 8" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-circle" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><circle cx="5" cy="5" r="4" fill="#d3d3d3"></circle></marker><linearGradient id="mermaid-grad-default" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-decision" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-rounded" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><radialGradient id="mermaid-grad-circle" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></radialGradient><linearGradient id="mermaid-grad-cylinder" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><linearGradient id="mermaid-grad-subroutine" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><filter id="mermaid-shadow-default" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-decision" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-rounded" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-circle" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-cylinder" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-subroutine" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter></defs><g><path d="M 845,52.8 L 845,189.6" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="772.96" y="109.63999999999999" width="144.07999999999998" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="845" y="121.19999999999999" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">NestFactory.create</text></g></g><g><path d="M 828.4000000000001,230.39999999999998 L 828.4000000000001,240.39999999999998 L 506.80000000000007,240.39999999999998 L 506.80000000000007,290.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 861.6,230.39999999999998 L 861.6,290.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 815.9000000000001,52.8 L 815.9000000000001,72.8 L 613,72.8 L 613,189.6" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="657.5300000000001" y="61.239999999999995" width="113.84" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="714.45" y="72.8" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">useGlobalPipes</text></g></g><g><path d="M 786.8000000000001,52.8 L 786.8000000000001,62.8 L 372.59999999999997,62.8 L 372.59999999999997,189.6" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="534.12" y="51.239999999999995" width="91.16" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="579.7" y="62.8" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">listen 3000</text></g></g><g><path d="M 524.8000000000001,331.2 L 524.8000000000001,391.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 488.80000000000007,331.2 L 488.80000000000007,341.2 L 166.80000000000007,341.2 L 166.8,391.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 843.6,331.2 L 843.6,341.2 L 798.8000000000001,341.2 L 798.8,391.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 879.6,331.2 L 879.6,568.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 798.8,432 L 798.8000000000001,518.8 L 840.8000000000001,518.8 L 840.8,568.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="736.4200000000001" y="507.23999999999995" width="166.75999999999996" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="819.8000000000001" y="518.8" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">constructor injection</text></g></g><g filter="url(#mermaid-shadow-default)"><rect x="757.7" y="12" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="815.9000000000001" y="32.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">src/main.ts</text></g><g filter="url(#mermaid-shadow-default)"><rect x="795.2" y="189.6" width="99.60000000000001" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="845" y="210" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">AppModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="452.80000000000007" y="290.4" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="506.80000000000007" y="310.79999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CoreModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="807.6" y="290.4" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="861.6" y="310.79999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="470.8" y="189.6" width="284.40000000000003" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="613" y="210" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">ValidationPipe (@nestjs/common)</text></g><g filter="url(#mermaid-shadow-default)"><rect x="314.4" y="189.6" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="372.59999999999997" y="210" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">HTTP Server</text></g><g filter="url(#mermaid-shadow-default)"><rect x="361.6" y="391.2" width="326.40000000000003" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="524.8000000000001" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle"><tspan x="524.8000000000001" dy="-9.100000000000023">TransformInterceptor</tspan><tspan x="524.8000000000001" dy="18.2">APP_INTERCEPTOR</tspan></text></g><g filter="url(#mermaid-shadow-default)"><rect x="12" y="391.2" width="309.6" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="166.8" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle"><tspan x="166.8" dy="-9.100000000000023">LoggingInterceptor</tspan><tspan x="166.8" dy="18.2">APP_INTERCEPTOR</tspan></text></g><g filter="url(#mermaid-shadow-default)"><rect x="728" y="391.2" width="141.60000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="798.8" y="411.59999999999997" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsController</text></g><g filter="url(#mermaid-shadow-default)"><rect x="802" y="568.8" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="860.2" y="589.1999999999999" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsService</text></g></svg></div></figure>
+
+
+
+<ol>
+<li><code>main.ts</code> creates the app from <code>AppModule</code>.</li>
+<li>A <strong>global</strong> <code>ValidationPipe</code> from <code>@nestjs/common</code> validates DTOs on incoming requests.</li>
+<li><code>AppModule</code> imports <code>CoreModule</code> (global interceptors) and <code>CatsModule</code> (cats API).</li>
+<li>Nest&#39;s DI container wires <code>CatsController</code> → <code>CatsService</code>.</li>
+</ol>
+<hr>
+<h2>Module graph and ownership</h2>
+<figure class="diagram"><figcaption>Diagram</figcaption><div class="diagram-canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 733.24 835.1999999999998" width="733.24" height="835.1999999999998" role="img"><rect width="733.24" height="835.1999999999998" fill="#333333"></rect><defs><marker id="mermaid-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d3d3d3"></path></marker><marker id="mermaid-arrow-open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-cross" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 2 2 L 8 8 M 8 2 L 2 8" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-circle" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><circle cx="5" cy="5" r="4" fill="#d3d3d3"></circle></marker><linearGradient id="mermaid-grad-default" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-decision" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-rounded" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><radialGradient id="mermaid-grad-circle" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></radialGradient><linearGradient id="mermaid-grad-cylinder" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><linearGradient id="mermaid-grad-subroutine" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><filter id="mermaid-shadow-default" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-decision" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-rounded" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-circle" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-cylinder" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-subroutine" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter></defs><g><path d="M 622.0400000000001,153.6 L 622.0400000000001,163.6 L 507.24000000000007,163.6 L 507.24000000000007,213.6" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 655.24,153.6 L 655.24,213.6" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 637.24,254.39999999999998 L 637.24,264.4 L 346.2400000000001,264.4 L 346.24000000000007,415.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="453.7200000000001" y="252.83999999999997" width="76.03999999999999" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="491.74000000000007" y="264.4" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">registers</text></g></g><g><path d="M 673.24,254.39999999999998 L 673.24,592.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="635.22" y="412.03999999999996" width="76.03999999999999" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="673.24" y="423.59999999999997" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">registers</text></g></g><g><path d="M 388.7200000000001,456 L 388.7200000000001,466 L 560.24,466 L 560.24,552.8 L 615.0400000000001,552.8 L 615.0400000000001,592.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="529.78" y="497.84" width="60.92" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="560.24" y="509.4" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">injects</text></g></g><g><path d="M 332.08000000000004,456 L 332.08000000000004,476 L 230.80000000000007,476 L 230.80000000000007,592.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="262.32000000000005" y="464.44" width="38.239999999999995" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="281.44000000000005" y="476" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">uses</text></g></g><g><path d="M 360.4000000000001,456 L 360.4000000000001,770.3999999999999" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="341.2800000000001" y="601.64" width="38.239999999999995" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="360.4000000000001" y="613.1999999999999" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">uses</text></g></g><g><path d="M 303.76000000000005,456 L 303.76000000000005,466 L 74.39999999999998,466 L 74.4,592.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="169.96" y="454.44" width="38.239999999999995" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="189.08" y="466" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">uses</text></g></g><g><path d="M 230.80000000000007,633.5999999999999 L 230.80000000000007,720.3999999999999 L 310.4000000000001,720.3999999999999 L 310.4000000000001,770.3999999999999" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="194.7800000000001" y="708.8399999999999" width="151.64" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="270.6000000000001" y="720.3999999999999" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">reads metadata from</text></g></g><g><path d="M 638.6400000000001,52.8 L 638.64,112.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 571.24,355.2 L 571.24,542.8 L 644.1400000000001,542.8 L 644.1400000000001,592.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 479.24000000000007,355.2 L 479.24000000000007,365.2 L 381.6400000000001,365.2 L 381.6400000000001,415.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 136.8400000000001,355.2 L 136.8400000000001,365.2 L 310.84000000000003,365.2 L 310.84000000000003,415.2" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g filter="url(#mermaid-shadow-default)"><rect x="580.44" y="12" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="638.6400000000001" y="32.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">NestFactory</text></g><g filter="url(#mermaid-shadow-default)"><rect x="387.24000000000007" y="314.4" width="276" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="525.24" y="334.79999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Dependency Injection Container</text></g><g filter="url(#mermaid-shadow-default)"><rect x="45.04000000000008" y="314.4" width="183.6" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="136.8400000000001" y="334.79999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Router / HTTP layer</text></g><g filter="url(#mermaid-shadow-default)"><rect x="588.84" y="112.8" width="99.60000000000001" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="638.64" y="133.2" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">AppModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="453.24000000000007" y="213.6" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="507.24000000000007" y="234" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CoreModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="601.24" y="213.6" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="655.24" y="234" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsModule</text></g><g filter="url(#mermaid-shadow-default)"><rect x="275.44000000000005" y="415.2" width="141.60000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="346.24000000000007" y="435.59999999999997" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsController</text></g><g filter="url(#mermaid-shadow-default)"><rect x="585.94" y="592.8" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="644.1400000000001" y="613.1999999999999" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsService</text></g><g filter="url(#mermaid-shadow-default)"><rect x="176.80000000000007" y="592.8" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="230.80000000000007" y="613.1999999999999" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">RolesGuard</text></g><g filter="url(#mermaid-shadow-default)"><rect x="260.4000000000001" y="770.3999999999999" width="150" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="335.4000000000001" y="790.7999999999998" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Roles decorator</text></g><g filter="url(#mermaid-shadow-default)"><rect x="12" y="592.8" width="124.80000000000001" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="74.4" y="613.1999999999999" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">ParseIntPipe</text></g></svg></div></figure>
+
+
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Path</th>
+<th>Origin</th>
+<th>Registered in module?</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AppModule</code></td>
+<td><code>src/app.module.ts</code></td>
+<td><strong>User</strong></td>
+<td>Root</td>
+<td>Composes the app</td>
+</tr>
+<tr>
+<td><code>CoreModule</code></td>
+<td><code>src/core/core.module.ts</code></td>
+<td><strong>User</strong></td>
+<td>Imported by <code>AppModule</code></td>
+<td>Registers global interceptors</td>
+</tr>
+<tr>
+<td><code>CatsModule</code></td>
+<td><code>src/cats/cats.module.ts</code></td>
+<td><strong>User</strong></td>
+<td>Imported by <code>AppModule</code></td>
+<td>Binds cats controller + service</td>
+</tr>
+<tr>
+<td><code>CatsController</code></td>
+<td><code>src/cats/cats.controller.ts</code></td>
+<td><strong>User</strong></td>
+<td><code>CatsModule.controllers</code></td>
+<td>HTTP routes under <code>/cats</code></td>
+</tr>
+<tr>
+<td><code>CatsService</code></td>
+<td><code>src/cats/cats.service.ts</code></td>
+<td><strong>User</strong></td>
+<td><code>CatsModule.providers</code></td>
+<td>In-memory cat store</td>
+</tr>
+<tr>
+<td><code>CreateCatDto</code></td>
+<td><code>src/cats/dto/create-cat.dto.ts</code></td>
+<td><strong>User</strong></td>
+<td>— (used as type)</td>
+<td>Request body shape + validation</td>
+</tr>
+<tr>
+<td><code>Cat</code></td>
+<td><code>src/cats/interfaces/cat.interface.ts</code></td>
+<td><strong>User</strong></td>
+<td>—</td>
+<td>Domain type</td>
+</tr>
+<tr>
+<td><code>RolesGuard</code></td>
+<td><code>src/common/guards/roles.guard.ts</code></td>
+<td><strong>User</strong></td>
+<td>Used via <code>@UseGuards</code></td>
+<td>Authorization</td>
+</tr>
+<tr>
+<td><code>Roles</code></td>
+<td><code>src/common/decorators/roles.decorator.ts</code></td>
+<td><strong>User</strong></td>
+<td>—</td>
+<td>Metadata for required roles</td>
+</tr>
+<tr>
+<td><code>ParseIntPipe</code></td>
+<td><code>src/common/pipes/parse-int.pipe.ts</code></td>
+<td><strong>User</strong></td>
+<td>Instantiated inline</td>
+<td>Param validation</td>
+</tr>
+<tr>
+<td><code>TransformInterceptor</code></td>
+<td><code>src/core/interceptors/transform.interceptor.ts</code></td>
+<td><strong>User</strong></td>
+<td><code>CoreModule</code> via <code>APP_INTERCEPTOR</code></td>
+<td>Wraps responses as <code>{ data: ... }</code></td>
+</tr>
+<tr>
+<td><code>LoggingInterceptor</code></td>
+<td><code>src/core/interceptors/logging.interceptor.ts</code></td>
+<td><strong>User</strong></td>
+<td><code>CoreModule</code> via <code>APP_INTERCEPTOR</code></td>
+<td>Logs before/after handler</td>
+</tr>
+<tr>
+<td><code>ValidationPipe</code> (used)</td>
+<td><code>@nestjs/common</code></td>
+<td><strong>NestJS</strong></td>
+<td>Global in <code>main.ts</code></td>
+<td>DTO validation</td>
+</tr>
+<tr>
+<td><code>ValidationPipe</code> (custom)</td>
+<td><code>src/common/pipes/validation.pipe.ts</code></td>
+<td><strong>User</strong></td>
+<td><strong>Not wired</strong></td>
+<td>Example custom pipe</td>
+</tr>
+<tr>
+<td><code>HttpExceptionFilter</code></td>
+<td><code>src/common/filters/http-exception.filter.ts</code></td>
+<td><strong>User</strong></td>
+<td><strong>Not wired</strong></td>
+<td>Example exception filter</td>
+</tr>
+<tr>
+<td><code>TimeoutInterceptor</code></td>
+<td><code>src/common/interceptors/timeout.interceptor.ts</code></td>
+<td><strong>User</strong></td>
+<td><strong>Not wired</strong></td>
+<td>Example interceptor</td>
+</tr>
+<tr>
+<td><code>ErrorsInterceptor</code></td>
+<td><code>src/common/interceptors/exception.interceptor.ts</code></td>
+<td><strong>User</strong></td>
+<td><strong>Not wired</strong></td>
+<td>Example interceptor</td>
+</tr>
+<tr>
+<td><code>LoggerMiddleware</code></td>
+<td><code>src/common/middleware/logger.middleware.ts</code></td>
+<td><strong>User</strong></td>
+<td><strong>Not wired</strong></td>
+<td>Example middleware</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2>Request lifecycle (GET /cats)</h2>
+<figure class="diagram"><figcaption>Diagram</figcaption><div class="diagram-canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1535.6 770" width="1535.6" height="770" role="img"><rect width="1535.6" height="770" fill="#333333"></rect><defs><marker id="mermaid-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d3d3d3"></path></marker></defs><g><rect x="40" y="20" width="120" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="100" y="40" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">Client</text><line x1="100" y1="60" x2="100" y2="690" stroke="#d3d3d3" stroke-width="1" stroke-dasharray="4,4"></line><rect x="40" y="690" width="120" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="100" y="710" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">Client</text></g><g><rect x="220" y="20" width="166.8" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="303.4" y="40" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">Nest HTTP Adapter</text><line x1="303.4" y1="60" x2="303.4" y2="690" stroke="#d3d3d3" stroke-width="1" stroke-dasharray="4,4"></line><rect x="220" y="690" width="166.8" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="303.4" y="710" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">Nest HTTP Adapter</text></g><g><rect x="446.8" y="20" width="175.20000000000002" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="534.4" y="40" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">LoggingInterceptor</text><line x1="534.4" y1="60" x2="534.4" y2="690" stroke="#d3d3d3" stroke-width="1" stroke-dasharray="4,4"></line><rect x="446.8" y="690" width="175.20000000000002" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="534.4" y="710" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">LoggingInterceptor</text></g><g><rect x="682" y="20" width="192" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="778" y="40" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">TransformInterceptor</text><line x1="778" y1="60" x2="778" y2="690" stroke="#d3d3d3" stroke-width="1" stroke-dasharray="4,4"></line><rect x="682" y="690" width="192" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="778" y="710" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">TransformInterceptor</text></g><g><rect x="934" y="20" width="120" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="994" y="40" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">RolesGuard</text><line x1="994" y1="60" x2="994" y2="690" stroke="#d3d3d3" stroke-width="1" stroke-dasharray="4,4"></line><rect x="934" y="690" width="120" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="994" y="710" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">RolesGuard</text></g><g><rect x="1114" y="20" width="141.60000000000002" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="1184.8" y="40" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">CatsController</text><line x1="1184.8" y1="60" x2="1184.8" y2="690" stroke="#d3d3d3" stroke-width="1" stroke-dasharray="4,4"></line><rect x="1114" y="690" width="141.60000000000002" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="1184.8" y="710" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">CatsController</text></g><g><rect x="1315.6" y="20" width="120" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="1375.6" y="40" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">CatsService</text><line x1="1375.6" y1="60" x2="1375.6" y2="690" stroke="#d3d3d3" stroke-width="1" stroke-dasharray="4,4"></line><rect x="1315.6" y="690" width="120" height="40" fill="#1f2020" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="1375.6" y="710" text-anchor="middle" dominant-baseline="central" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">CatsService</text></g><g><line x1="100" y1="90" x2="303.4" y2="90" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></line><text x="201.7" y="82" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;GET /cats&quot;</text></g><g><line x1="303.4" y1="140" x2="534.4" y2="140" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></line><text x="418.9" y="132" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;intercept (before)&quot;</text></g><g><line x1="534.4" y1="190" x2="778" y2="190" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></line><text x="656.2" y="182" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;next.handle()&quot;</text></g><g><line x1="778" y1="240" x2="994" y2="240" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></line><text x="886" y="232" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;canActivate?&quot;</text></g><g><line x1="994" y1="290" x2="1184.8" y2="290" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></line><text x="1089.4" y="282" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;findAll()&quot;</text></g><g><line x1="1184.8" y1="340" x2="1375.6" y2="340" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></line><text x="1280.1999999999998" y="332" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;findAll()&quot;</text></g><g><line x1="1375.6" y1="390" x2="1184.8" y2="390" stroke="#d3d3d3" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#mermaid-arrow)"></line><text x="1280.1999999999998" y="382" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;Promiseﬂ°lt¶ßCatﬂ°°91¶ßﬂ°°93¶ßﬂ°gt¶ß&quot;</text></g><g><line x1="1184.8" y1="440" x2="778" y2="440" stroke="#d3d3d3" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#mermaid-arrow)"></line><text x="981.4" y="432" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;Catﬂ°°91¶ßﬂ°°93¶ß&quot;</text></g><g><line x1="778" y1="490" x2="534.4" y2="490" stroke="#d3d3d3" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#mermaid-arrow)"></line><text x="656.2" y="482" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;ﬂ°°123¶ß data: Catﬂ°°91¶ßﬂ°°93¶ß ﬂ°°125¶ß&quot;</text></g><g><line x1="534.4" y1="540" x2="303.4" y2="540" stroke="#d3d3d3" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#mermaid-arrow)"></line><text x="418.9" y="532" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">log timing</text></g><g><line x1="303.4" y1="590" x2="100" y2="590" stroke="#d3d3d3" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#mermaid-arrow)"></line><text x="201.7" y="582" text-anchor="middle" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;200 ﬂ°°123¶ß data: ﬂ°°91¶ß...ﬂ°°93¶ß ﬂ°°125¶ß&quot;</text></g><g><rect x="1004" y="640" width="120" height="40" fill="#484848" stroke="#cccccc" stroke-width="1"></rect><text x="1064" y="660" text-anchor="middle" dominant-baseline="central" font-size="11.9" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf">&quot;No @Roles on findAll  to  allow&quot;</text></g></svg></div></figure>
+
+
+
+<p>For <code>POST /cats</code>, the same pipeline runs, but <code>RolesGuard</code> reads <code>@Roles([&#39;admin&#39;])</code> metadata and checks <code>request.user.roles</code>.</p>
+<hr>
+<h2>Controllers, services, and their relations</h2>
+<h3>CatsController ↔ CatsService</h3>
+<pre><code class="language-typescript">// src/cats/cats.controller.ts
+constructor(private readonly catsService: CatsService) {}
+</code></pre>
+<ul>
+<li><strong>Relation:</strong> Constructor injection. Nest sees <code>CatsService</code> in the constructor, looks it up in <code>CatsModule.providers</code>, and injects a singleton instance.</li>
+<li><strong>Controller</strong> = HTTP layer (routing, status codes, request/response).</li>
+<li><strong>Service</strong> = business/data layer (here, an in-memory array).</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Controller method</th>
+<th>HTTP</th>
+<th>Calls service</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>create()</code></td>
+<td><code>POST /cats</code></td>
+<td><code>catsService.create(dto)</code></td>
+<td>Protected by <code>@Roles([&#39;admin&#39;])</code></td>
+</tr>
+<tr>
+<td><code>findAll()</code></td>
+<td><code>GET /cats</code></td>
+<td><code>catsService.findAll()</code></td>
+<td>Returns <code>{ data: cats }</code> via interceptor</td>
+</tr>
+<tr>
+<td><code>findOne()</code></td>
+<td><code>GET /cats/:id</code></td>
+<td><em>(none)</em></td>
+<td>Stub; only logs parsed <code>id</code></td>
+</tr>
+</tbody></table></div>
+<h3>CatsModule registration</h3>
+<pre><code class="language-typescript">// src/cats/cats.module.ts
+@Module({
+  controllers: [CatsController],
+  providers: [CatsService],
+})
+</code></pre>
+<ul>
+<li><code>controllers</code> → Nest registers routes from <code>@Controller</code>, <code>@Get</code>, <code>@Post</code>, etc.</li>
+<li><code>providers</code> → Nest registers injectable classes for DI.</li>
+</ul>
+<h3>Classes, interfaces &amp; types in this sample</h3>
+<p>Nest uses TypeScript <strong>classes</strong> for things that run and carry decorators; <strong>interfaces</strong> for shape-only descriptions that vanish after compile.</p>
+<p><strong>Interface — shape of a cat (no runtime file):</strong></p>
+<pre><code class="language-typescript">// src/cats/interfaces/cat.interface.ts
+export interface Cat {
+  name: string;
+  age: number;
+  breed: string;
+}
+</code></pre>
+<p><strong>Class — request body + validation (exists at runtime):</strong></p>
+<pre><code class="language-typescript">// src/cats/dto/create-cat.dto.ts
+export class CreateCatDto {
+  @IsString()
+  readonly name: string;
+  @IsInt()
+  readonly age: number;
+  @IsString()
+  readonly breed: string;
+}
+</code></pre>
+<p><strong>Class — service Nest injects (exists at runtime):</strong></p>
+<pre><code class="language-typescript">// src/cats/cats.service.ts
+@Injectable()
+export class CatsService {
+  private readonly cats: Cat[] = [];
+  findAll(): Promise&lt;Cat[]&gt; { ... }
+}
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Class</strong></th>
+<th><strong>Interface</strong></th>
+<th><strong>Type alias</strong> (<code>type X = …</code>)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Exists at runtime?</strong></td>
+<td>Yes (object in memory)</td>
+<td>No (TypeScript only)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Can use <code>@Injectable()</code>, <code>@IsString()</code>, etc.?</strong></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Typical use in Nest</strong></td>
+<td>Controllers, services, DTOs, guards</td>
+<td>Domain/response shapes</td>
+<td>Unions, aliases (<code>type Role = &#39;admin&#39; | &#39;user&#39;</code>)</td>
+</tr>
+<tr>
+<td><strong>This sample</strong></td>
+<td><code>CatsService</code>, <code>CreateCatDto</code></td>
+<td><code>Cat</code></td>
+<td><em>(not used here)</em></td>
+</tr>
+</tbody></table></div>
+<p><strong>Why <code>CreateCatDto</code> is a class:</strong> <code>ValidationPipe</code> needs real decorators on a class to validate POST bodies.</p>
+<p><strong>Why <code>Cat</code> is an interface:</strong> it only types the in-memory array — no decorators or Nest registration needed.</p>
+<p><strong>Why it matters:</strong> wrong field names fail at compile time; DTO vs domain types keep “what clients send” separate from “what we store/return”. See the glossary: <a href="../glossary.html#typescript-class-interface-type">Classes, interfaces &amp; types</a>.</p>
+<h3>CoreModule (global interceptors)</h3>
+<pre><code class="language-typescript">// src/core/core.module.ts
+@Module({
+  providers: [
+    { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
+    { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
+  ],
+})
+</code></pre>
+<ul>
+<li><code>APP_INTERCEPTOR</code> is a Nest <strong>token</strong> from <code>@nestjs/core</code>.</li>
+<li>Interceptors registered this way run for <strong>every</strong> route in the app.</li>
+</ul>
+<hr>
+<h2>Decorator glossary (<code>@</code>)</h2>
+<p>Decorators attach metadata or behavior to classes, methods, or parameters. Nest reads that metadata at startup and request time.</p>
+<h3>Legend</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>NestJS</strong></td>
+<td>From <code>@nestjs/common</code> or <code>@nestjs/core</code></td>
+</tr>
+<tr>
+<td><strong>User</strong></td>
+<td>Defined in this sample</td>
+</tr>
+<tr>
+<td><strong>class-validator</strong></td>
+<td>From <code>class-validator</code> package</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h3>Class-level decorators</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator</th>
+<th>Library</th>
+<th>Used on</th>
+<th>Purpose in this sample</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Module({...})</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>AppModule</code>, <code>CatsModule</code>, <code>CoreModule</code></td>
+<td>Declares a module: imports, controllers, providers, exports</td>
+</tr>
+<tr>
+<td><code>@Controller(&#39;cats&#39;)</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>CatsController</code></td>
+<td>Marks class as controller; base path <code>/cats</code></td>
+</tr>
+<tr>
+<td><code>@Injectable()</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>CatsService</code>, guards, pipes, interceptors, middleware</td>
+<td>Marks class as injectable provider</td>
+</tr>
+<tr>
+<td><code>@UseGuards(RolesGuard)</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>CatsController</code></td>
+<td>Applies <code>RolesGuard</code> to all routes in this controller</td>
+</tr>
+<tr>
+<td><code>@Catch(HttpException)</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>HttpExceptionFilter</code></td>
+<td>Binds filter to <code>HttpException</code> (file not wired)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h3>Method-level decorators</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator</th>
+<th>Library</th>
+<th>Used on</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Get()</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>findAll()</code></td>
+<td>Maps to <code>GET /cats</code></td>
+</tr>
+<tr>
+<td><code>@Get(&#39;:id&#39;)</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>findOne()</code></td>
+<td>Maps to <code>GET /cats/:id</code></td>
+</tr>
+<tr>
+<td><code>@Post()</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>create()</code></td>
+<td>Maps to <code>POST /cats</code></td>
+</tr>
+<tr>
+<td><code>@Roles([&#39;admin&#39;])</code></td>
+<td><strong>User</strong></td>
+<td><code>create()</code></td>
+<td>Sets metadata: only <code>admin</code> role allowed</td>
+</tr>
+</tbody></table></div>
+<p><code>Roles</code> is <strong>not</strong> a Nest built-in. It is created with <code>Reflector.createDecorator</code>:</p>
+<pre><code class="language-typescript">// src/common/decorators/roles.decorator.ts
+import { Reflector } from &#39;@nestjs/core&#39;;
+
+export const Roles = Reflector.createDecorator&lt;string[]&gt;();
+</code></pre>
+<p><code>RolesGuard</code> reads that metadata at runtime:</p>
+<pre><code class="language-typescript">// src/common/guards/roles.guard.ts (full canActivate)
+canActivate(context: ExecutionContext): boolean {
+  const roles = this.reflector.get(Roles, context.getHandler());
+  if (!roles) {
+    return true;
+  }
+  const request = context.switchToHttp().getRequest();
+  const user = request.user;
+  const hasRole = () =&gt;
+    user.roles.some(role =&gt; !!roles.find(item =&gt; item === role));
+
+  return user &amp;&amp; user.roles &amp;&amp; hasRole();
+}
+</code></pre>
+<h4>Walkthrough: line by line</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+<th>Plain English</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>reflector.get(Roles, context.getHandler())</code></td>
+<td>Reads metadata attached by <code>@Roles(...)</code> on <strong>this</strong> route handler</td>
+<td>“Did this method declare required roles?” Returns <code>[&#39;admin&#39;]</code> on <code>create()</code>, or <code>undefined</code> on <code>findAll()</code> / <code>findOne()</code></td>
+</tr>
+<tr>
+<td><code>if (!roles) return true</code></td>
+<td>No <code>@Roles</code> on this route → guard <strong>allows</strong> the request</td>
+<td><strong>Opt-in protection:</strong> only routes you stamp with <code>@Roles</code> are checked. <code>GET /cats</code> has no <code>@Roles</code>, so the guard steps aside (<code>canActivate</code> = <strong>true</strong> = “yes, continue”).</td>
+</tr>
+<tr>
+<td><code>context.switchToHttp().getRequest()</code></td>
+<td>Gets the Express/Fastify request object</td>
+<td>Same <code>req</code> you would use in middleware</td>
+</tr>
+<tr>
+<td><code>request.user</code></td>
+<td>Who is calling (expected to be set by auth)</td>
+<td><strong>Not set in this sample.</strong> In a real app, login/JWT middleware puts <code>{ roles: [&#39;admin&#39;, …] }</code> here. See sample <strong>19-auth-jwt</strong>.</td>
+</tr>
+<tr>
+<td><code>user.roles.some(...)</code></td>
+<td>“Does the user have <strong>at least one</strong> of the required roles?”</td>
+<td>Loops each role on the user and checks if any matches the route’s required list</td>
+</tr>
+<tr>
+<td><code>roles.find(item =&gt; item === role)</code></td>
+<td>Search required roles for a match to this user role</td>
+<td>Returns <code>&#39;admin&#39;</code> if found, or <code>undefined</code> if not</td>
+</tr>
+<tr>
+<td><code>!!roles.find(...)</code></td>
+<td>Converts result to strict <strong>boolean</strong></td>
+<td>See <strong>Why <code>!!</code>?</strong> below</td>
+</tr>
+<tr>
+<td><code>return user &amp;&amp; user.roles &amp;&amp; hasRole()</code></td>
+<td>All must be truthy to allow</td>
+<td>No user → deny. No <code>roles</code> array → deny. No matching role → deny.</td>
+</tr>
+</tbody></table></div>
+<h4>Why <code>return true</code> when <code>!roles</code>?</h4>
+<p><code>canActivate</code> answers one question: <strong>“May this request reach the controller handler?”</strong></p>
+<ul>
+<li><strong><code>true</code></strong> → yes, continue (Nest runs the route).</li>
+<li><strong><code>false</code></strong> → no, stop (Nest responds with <strong>403 Forbidden</strong> by default).</li>
+</ul>
+<p>When <code>roles</code> is <code>undefined</code>, this route never got <code>@Roles(...)</code>. The guard treats that as <strong>“no extra role rule here”</strong> and returns <strong><code>true</code></strong>. That is intentional: <code>@UseGuards(RolesGuard)</code> is on the whole controller, but only <code>POST /cats</code> adds <code>@Roles([&#39;admin&#39;])</code>. Listing cats stays open from the guard’s point of view.</p>
+<p>If you wanted <strong>every</strong> route to require a role, you would either put <code>@Roles(...)</code> on each handler or change the guard to <code>if (!roles) return false</code>.</p>
+<h4>Why <code>!!roles.find(...)</code>?</h4>
+<p><code>Array.find()</code> does <strong>not</strong> return <code>true</code>/<code>false</code>. It returns:</p>
+<ul>
+<li>the <strong>matching item</strong> (e.g. <code>&#39;admin&#39;</code>) if found, or</li>
+<li><strong><code>undefined</code></strong> if nothing matched.</li>
+</ul>
+<p>In JavaScript, both <code>&#39;admin&#39;</code> and <code>&#39;editor&#39;</code> are <strong>truthy</strong>; <code>undefined</code> is <strong>falsy</strong>. So you <em>could</em> write:</p>
+<pre><code class="language-typescript">roles.find(item =&gt; item === role) // truthy = match, falsy = no match
+</code></pre>
+<p>The <strong><code>!!</code></strong> (double negation) forces a real boolean:</p>
+<pre><code class="language-typescript">!!roles.find(item =&gt; item === role) // true or false, always
+</code></pre>
+<ul>
+<li>First <code>!</code> turns truthy → <code>false</code>, falsy → <code>true</code>.</li>
+<li>Second <code>!</code> flips again → <strong><code>true</code></strong> if a match existed, <strong><code>false</code></strong> if not.</li>
+</ul>
+<p>It is a common style when you want an explicit boolean inside <code>.some()</code> or <code>if</code> conditions.</p>
+<h4>Where are roles defined?</h4>
+<p>Two different “roles” lists:</p>
+<ol>
+<li><strong>Required roles (route)</strong> — you write them on the decorator: <code>@Roles([&#39;admin&#39;])</code>. Strings you choose; not loaded from a DB in this sample.</li>
+<li><strong>User’s roles (caller)</strong> — expected on <code>request.user.roles</code> (e.g. <code>[&#39;admin&#39;, &#39;user&#39;]</code>). This sample does not populate <code>request.user</code>; the guard shows the <strong>pattern</strong> only.</li>
+</ol>
+<p>The decorator file (<code>roles.decorator.ts</code>) is the <strong>blueprint</strong> for <code>@Roles</code> — it does not contain <code>&#39;admin&#39;</code>. The mold is defined once; each <code>@Roles([...])</code> on a method presses different values into metadata.</p>
+<hr>
+<h3>Parameter decorators</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator</th>
+<th>Library</th>
+<th>Used on</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Body()</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>create(@Body() createCatDto)</code></td>
+<td>Extracts and binds JSON body to <code>CreateCatDto</code></td>
+</tr>
+<tr>
+<td><code>@Param(&#39;id&#39;, new ParseIntPipe())</code></td>
+<td><strong>NestJS</strong> + <strong>User</strong> pipe</td>
+<td><code>findOne(..., id)</code></td>
+<td>Extracts <code>:id</code> route param; <code>ParseIntPipe</code> converts/validates it</td>
+</tr>
+</tbody></table></div>
+<p>Note: <code>@Param(&#39;id&#39;, new ParseIntPipe())</code> combines a <strong>NestJS</strong> parameter decorator with a <strong>user-created</strong> pipe instance.</p>
+<hr>
+<h3>Property decorators (DTO validation)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator</th>
+<th>Library</th>
+<th>Used on</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@IsString()</code></td>
+<td><strong>class-validator</strong></td>
+<td><code>CreateCatDto.name</code>, <code>.breed</code></td>
+<td>Validates string</td>
+</tr>
+<tr>
+<td><code>@IsInt()</code></td>
+<td><strong>class-validator</strong></td>
+<td><code>CreateCatDto.age</code></td>
+<td>Validates integer</td>
+</tr>
+</tbody></table></div>
+<p>These work with the global <code>ValidationPipe</code> in <code>main.ts</code>:</p>
+<pre><code class="language-typescript">// src/main.ts
+const app = await NestFactory.create(AppModule);
+app.useGlobalPipes(new ValidationPipe());
+</code></pre>
+<hr>
+<h3>Decorator / metadata flow (authorization example)</h3>
+<figure class="diagram"><figcaption>Diagram</figcaption><div class="diagram-canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2080.8 160.32" width="2080.8" height="160.32" role="img"><rect width="2080.8" height="160.32" fill="#333333"></rect><defs><marker id="mermaid-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d3d3d3"></path></marker><marker id="mermaid-arrow-open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-cross" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 2 2 L 8 8 M 8 2 L 2 8" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-circle" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><circle cx="5" cy="5" r="4" fill="#d3d3d3"></circle></marker><linearGradient id="mermaid-grad-default" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-decision" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-rounded" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><radialGradient id="mermaid-grad-circle" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></radialGradient><linearGradient id="mermaid-grad-cylinder" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><linearGradient id="mermaid-grad-subroutine" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><filter id="mermaid-shadow-default" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-decision" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-rounded" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-circle" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-cylinder" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-subroutine" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter></defs><g><path d="M 405.6,35.12 L 769.2,35.12" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="511.5800000000001" y="23.56" width="151.64" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="587.4000000000001" y="35.12" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">metadata on handler</text></g></g><g><path d="M 952.8000000000001,115.91999999999999 L 962.8000000000001,115.91999999999999 L 962.8000000000001,48.72 L 1012.8000000000001,48.72" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 868.8000000000001,35.12 L 1012.8000000000001,35.12" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 1221.6000000000001,41.919999999999995 L 1543.2,41.919999999999995" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="1287.68" y="30.359999999999996" width="189.43999999999997" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="1382.4" y="41.919999999999995" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">reads request.user.roles</text></g></g><g><path d="M 1694.4,32.4 L 1839.6000000000001,32.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="1751.66" y="20.84" width="30.679999999999996" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="1767" y="32.4" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">yes</text></g></g><g><path d="M 1694.4,51.44 L 1704.4,51.44 L 1704.4,113.19999999999999 L 1839.6000000000001,113.19999999999999" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="1692.8400000000001" y="70.75999999999999" width="23.119999999999997" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="1704.4" y="82.32" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">no</text></g></g><g filter="url(#mermaid-shadow-default)"><rect x="12" y="14.719999999999999" width="393.6" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="208.8" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle"><tspan x="208.8" dy="-9.100000000000001">@Roles(ﬂ°°91¶ß&#x27;admin&#x27;ﬂ°°93¶ß)</tspan><tspan x="208.8" dy="18.2">User decorator</tspan></text></g><g filter="url(#mermaid-shadow-default)"><rect x="769.2" y="14.719999999999999" width="99.60000000000001" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="819" y="35.12" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Reflector</text></g><g filter="url(#mermaid-shadow-default)"><rect x="685.2" y="95.52" width="267.6" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="819" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle"><tspan x="819" dy="-9.099999999999994">@UseGuards(RolesGuard)</tspan><tspan x="819" dy="18.2">NestJS</tspan></text></g><g filter="url(#mermaid-shadow-default)"><rect x="1012.8000000000001" y="21.519999999999996" width="208.8" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="1117.2" y="41.919999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">RolesGuard.canActivate</text></g><g filter="url(#mermaid-shadow-decision)"><polygon points="1618.8,13.36 1694.4,41.919999999999995 1618.8,70.47999999999999 1543.2,41.919999999999995" fill="url(#mermaid-grad-decision)" stroke="#cccccc" stroke-width="1.5"></polygon><text x="1618.8" y="41.919999999999995" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Has admin?</text></g><g filter="url(#mermaid-shadow-default)"><rect x="1839.6000000000001" y="12" width="217.20000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="1948.2" y="32.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Controller handler runs</text></g><g filter="url(#mermaid-shadow-default)"><rect x="1839.6000000000001" y="92.8" width="133.2" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="1906.2" y="113.19999999999999" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">403 Forbidden</text></g></svg></div></figure>
+
+
+
+<hr>
+<h2>Non-decorator Nest building blocks</h2>
+<p>These use <code>@Injectable()</code> but implement <strong>interfaces</strong> from NestJS:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Interface (NestJS)</th>
+<th>User class</th>
+<th>Active?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Guard</strong></td>
+<td><code>CanActivate</code></td>
+<td><code>RolesGuard</code></td>
+<td>Yes (on controller)</td>
+</tr>
+<tr>
+<td><strong>Pipe</strong></td>
+<td><code>PipeTransform</code></td>
+<td><code>ParseIntPipe</code>, custom <code>ValidationPipe</code></td>
+<td><code>ParseIntPipe</code> yes</td>
+</tr>
+<tr>
+<td><strong>Interceptor</strong></td>
+<td><code>NestInterceptor</code></td>
+<td><code>LoggingInterceptor</code>, <code>TransformInterceptor</code>, others</td>
+<td>Core ones yes</td>
+</tr>
+<tr>
+<td><strong>Filter</strong></td>
+<td><code>ExceptionFilter</code></td>
+<td><code>HttpExceptionFilter</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Middleware</strong></td>
+<td><code>NestMiddleware</code></td>
+<td><code>LoggerMiddleware</code></td>
+<td>No</td>
+</tr>
+</tbody></table></div>
+<h3>Execution order (simplified)</h3>
+<pre><code>Incoming request
+  → Middleware (if configured)
+  → Guards (@UseGuards)
+  → Interceptors (before)
+  → Pipes (@Body, @Param pipes)
+  → Controller handler
+  → Service
+  → Interceptors (after / map response)
+  → Exception filters (on error)
+  → Outgoing response
+</code></pre>
+<hr>
+<h2>Dependency injection map</h2>
+<figure class="diagram"><figcaption>Diagram</figcaption><div class="diagram-canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 816 278.8" width="816" height="278.8" role="img"><rect width="816" height="278.8" fill="#333333"></rect><defs><marker id="mermaid-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d3d3d3"></path></marker><marker id="mermaid-arrow-open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-cross" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 2 2 L 8 8 M 8 2 L 2 8" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-circle" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><circle cx="5" cy="5" r="4" fill="#d3d3d3"></circle></marker><linearGradient id="mermaid-grad-default" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-decision" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-rounded" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><radialGradient id="mermaid-grad-circle" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></radialGradient><linearGradient id="mermaid-grad-cylinder" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><linearGradient id="mermaid-grad-subroutine" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><filter id="mermaid-shadow-default" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-decision" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-rounded" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-circle" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-cylinder" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-subroutine" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter></defs><g><path d="M 153.60000000000002,174 L 213.60000000000002,174" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 153.60000000000002,187.6 L 163.60000000000002,187.6 L 163.60000000000002,234.39999999999998 L 390,234.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" stroke-dasharray="5,5" marker-end="url(#mermaid-arrow)"></path><g><rect x="121.80000000000003" y="199.44" width="83.6" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="163.60000000000002" y="211" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">@UseGuards</text></g></g><g><path d="M 498,234.4 L 558,234.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 348.8,32.4 L 408.79999999999995,32.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 348.8,46 L 358.8,46 L 358.8,113.19999999999999 L 408.79999999999995,113.19999999999999" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g filter="url(#mermaid-shadow-default)"><rect x="12" y="160.4" width="141.60000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="82.80000000000001" y="180.8" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsController</text></g><g filter="url(#mermaid-shadow-default)"><rect x="12" y="12" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="70.2" y="32.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsService</text></g><g filter="url(#mermaid-shadow-default)"><rect x="213.60000000000002" y="153.6" width="116.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="271.8" y="174" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">CatsService</text></g><g filter="url(#mermaid-shadow-default)"><rect x="390" y="214" width="108" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="444" y="234.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">RolesGuard</text></g><g filter="url(#mermaid-shadow-default)"><rect x="558" y="214" width="234" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="675" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle"><tspan x="675" dy="-9.099999999999994">Reflector</tspan><tspan x="675" dy="18.2">NestJS built-in</tspan></text></g><g filter="url(#mermaid-shadow-default)"><rect x="408.79999999999995" y="12" width="175.20000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="496.4" y="32.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">LoggingInterceptor</text></g><g filter="url(#mermaid-shadow-default)"><rect x="408.79999999999995" y="92.8" width="192" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="504.79999999999995" y="113.19999999999999" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">TransformInterceptor</text></g><g filter="url(#mermaid-shadow-default)"><rect x="148.4" y="18.799999999999997" width="200.4" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="248.60000000000002" y="39.199999999999996" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">APP_INTERCEPTOR token</text></g></svg></div></figure>
+
+
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Injected dependencies</th>
+<th>Provided by</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>CatsController</code></td>
+<td><code>CatsService</code></td>
+<td><code>CatsModule.providers</code></td>
+</tr>
+<tr>
+<td><code>RolesGuard</code></td>
+<td><code>Reflector</code></td>
+<td>Nest core (global)</td>
+</tr>
+<tr>
+<td><code>CatsService</code></td>
+<td><em>(none)</em></td>
+<td>—</td>
+</tr>
+</tbody></table></div>
+<p><strong>Tip:</strong> For reliable DI, add <code>RolesGuard</code> to <code>CatsModule.providers</code> when it has constructor dependencies.</p>
+<hr>
+<h2>Data types</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Path</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Cat</code></td>
+<td><code>src/cats/interfaces/cat.interface.ts</code></td>
+<td>Domain model (plain TypeScript interface)</td>
+</tr>
+<tr>
+<td><code>CreateCatDto</code></td>
+<td><code>src/cats/dto/create-cat.dto.ts</code></td>
+<td>Input contract for <code>POST /cats</code>; validated at runtime</td>
+</tr>
+</tbody></table></div>
+<p><code>CreateCatDto</code> and <code>Cat</code> share the same fields; the DTO adds validation decorators.</p>
+<hr>
+<h2>Tests</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it verifies</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>src/cats/cats.controller.spec.ts</code></td>
+<td>Unit: controller delegates to service</td>
+</tr>
+<tr>
+<td><code>e2e/cats/cats.e2e-spec.ts</code></td>
+<td>E2E: <code>GET /cats</code> returns <code>{ data: [...] }</code> (interceptors included)</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2>Mental model: how NestJS works here</h2>
+<ol>
+<li><strong>Modules</strong> group related code and tell Nest what to register.</li>
+<li><strong>Controllers</strong> define HTTP routes; they stay thin and delegate to services.</li>
+<li><strong>Services</strong> hold logic/state; <code>@Injectable()</code> makes them injectable.</li>
+<li><strong>Decorators</strong> declare routes, validation, auth, and metadata — Nest reads them via reflection (<code>reflect-metadata</code>).</li>
+<li><strong>Cross-cutting concerns</strong> (guards, pipes, interceptors, filters, middleware) wrap the request pipeline without polluting business logic.</li>
+</ol>
+<p>This sample is intentionally small: one feature module (<code>cats</code>), one infrastructure module (<code>core</code>), and a <code>common/</code> folder showing patterns you can wire in as needed.</p>
+</div>
+      
+    <nav class="page-nav" aria-label="Sample pagination">
+      <span></span>
+      <a class="page-nav-link" href="../samples/02-gateways.html"><span class="page-nav-dir">Next →</span><span class="page-nav-title">02-gateways</span></a>
+    </nav>
+    </main>
+  </div>
+
+  <a href="#top" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+  <script src="../assets/guide.js"></script>
+</body>
+</html>

@@ -7,8 +7,9 @@
   },
   "packageManager": "yarn@1.22.19",
   "scripts": {
-    "dev": "next dev",
-    "build": "prisma generate && next build",
+    "dev": "yarn sync:nessample && next dev",
+    "build": "yarn sync:nessample && prisma generate && next build",
+    "sync:nessample": "rm -rf public/nessample && cp -R src/app/nestjsguide/site public/nessample",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",

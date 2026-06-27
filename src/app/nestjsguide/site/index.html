@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!-- NestJS samples — offline page. Part of a self-contained static site; copy the whole site/ folder. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="description" content="Offline NestJS samples learning guide — index of all examples with beginner explanations." />
+  <title>Home · NestJS Samples</title>
+  <link rel="stylesheet" href="assets/guide.css" />
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <a class="site-brand" href="index.html">
+      <span class="site-mark">N</span>
+      <div>
+        <p class="site-kicker">NestJS samples</p>
+        <p class="site-title">Learning guide</p>
+      </div>
+    </a>
+  </header>
+
+  <div class="site-shell">
+    <aside class="site-nav" id="site-nav" aria-label="Samples navigation">
+      <div class="nav-inner">
+        <p class="nav-heading"><a href="index.html">Home</a> · <a href="glossary.html">Glossary</a></p>
+        <p class="nav-heading">All samples (36)</p>
+        <ol class="toc-list"><li class=""><a class="toc-link" href="samples/01-cats-app.html"><span class="toc-id">01-cats-app</span><span class="toc-title">cats app</span></a></li>
+<li class=""><a class="toc-link" href="samples/02-gateways.html"><span class="toc-id">02-gateways</span><span class="toc-title">gateways</span></a></li>
+<li class=""><a class="toc-link" href="samples/03-microservices.html"><span class="toc-id">03-microservices</span><span class="toc-title">microservices</span></a></li>
+<li class=""><a class="toc-link" href="samples/04-grpc.html"><span class="toc-id">04-grpc</span><span class="toc-title">grpc</span></a></li>
+<li class=""><a class="toc-link" href="samples/05-sql-typeorm.html"><span class="toc-id">05-sql-typeorm</span><span class="toc-title">sql typeorm</span></a></li>
+<li class=""><a class="toc-link" href="samples/06-mongoose.html"><span class="toc-id">06-mongoose</span><span class="toc-title">mongoose</span></a></li>
+<li class=""><a class="toc-link" href="samples/07-sequelize.html"><span class="toc-id">07-sequelize</span><span class="toc-title">sequelize</span></a></li>
+<li class=""><a class="toc-link" href="samples/08-webpack.html"><span class="toc-id">08-webpack</span><span class="toc-title">webpack</span></a></li>
+<li class=""><a class="toc-link" href="samples/09-babel-example.html"><span class="toc-id">09-babel-example</span><span class="toc-title">babel example</span></a></li>
+<li class=""><a class="toc-link" href="samples/10-fastify.html"><span class="toc-id">10-fastify</span><span class="toc-title">fastify</span></a></li>
+<li class=""><a class="toc-link" href="samples/11-swagger.html"><span class="toc-id">11-swagger</span><span class="toc-title">swagger</span></a></li>
+<li class=""><a class="toc-link" href="samples/12-graphql-schema-first.html"><span class="toc-id">12-graphql-schema-first</span><span class="toc-title">graphql schema first</span></a></li>
+<li class=""><a class="toc-link" href="samples/13-mongo-typeorm.html"><span class="toc-id">13-mongo-typeorm</span><span class="toc-title">mongo typeorm</span></a></li>
+<li class=""><a class="toc-link" href="samples/14-mongoose-base.html"><span class="toc-id">14-mongoose-base</span><span class="toc-title">mongoose base</span></a></li>
+<li class=""><a class="toc-link" href="samples/15-mvc.html"><span class="toc-id">15-mvc</span><span class="toc-title">mvc</span></a></li>
+<li class=""><a class="toc-link" href="samples/16-gateways-ws.html"><span class="toc-id">16-gateways-ws</span><span class="toc-title">gateways ws</span></a></li>
+<li class=""><a class="toc-link" href="samples/17-mvc-fastify.html"><span class="toc-id">17-mvc-fastify</span><span class="toc-title">mvc fastify</span></a></li>
+<li class=""><a class="toc-link" href="samples/18-context.html"><span class="toc-id">18-context</span><span class="toc-title">context</span></a></li>
+<li class=""><a class="toc-link" href="samples/19-auth-jwt.html"><span class="toc-id">19-auth-jwt</span><span class="toc-title">auth jwt</span></a></li>
+<li class=""><a class="toc-link" href="samples/20-cache.html"><span class="toc-id">20-cache</span><span class="toc-title">cache</span></a></li>
+<li class=""><a class="toc-link" href="samples/21-serializer.html"><span class="toc-id">21-serializer</span><span class="toc-title">serializer</span></a></li>
+<li class=""><a class="toc-link" href="samples/22-graphql-prisma.html"><span class="toc-id">22-graphql-prisma</span><span class="toc-title">graphql prisma</span></a></li>
+<li class=""><a class="toc-link" href="samples/23-graphql-code-first.html"><span class="toc-id">23-graphql-code-first</span><span class="toc-title">graphql code first</span></a></li>
+<li class=""><a class="toc-link" href="samples/24-serve-static.html"><span class="toc-id">24-serve-static</span><span class="toc-title">serve static</span></a></li>
+<li class=""><a class="toc-link" href="samples/25-dynamic-modules.html"><span class="toc-id">25-dynamic-modules</span><span class="toc-title">dynamic modules</span></a></li>
+<li class=""><a class="toc-link" href="samples/26-queues.html"><span class="toc-id">26-queues</span><span class="toc-title">queues</span></a></li>
+<li class=""><a class="toc-link" href="samples/27-scheduling.html"><span class="toc-id">27-scheduling</span><span class="toc-title">scheduling</span></a></li>
+<li class=""><a class="toc-link" href="samples/28-sse.html"><span class="toc-id">28-sse</span><span class="toc-title">sse</span></a></li>
+<li class=""><a class="toc-link" href="samples/29-file-upload.html"><span class="toc-id">29-file-upload</span><span class="toc-title">file upload</span></a></li>
+<li class=""><a class="toc-link" href="samples/30-event-emitter.html"><span class="toc-id">30-event-emitter</span><span class="toc-title">event emitter</span></a></li>
+<li class=""><a class="toc-link" href="samples/31-graphql-federation-code-first.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-title">graphql federation code first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/31-graphql-federation-code-first/gateway.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/31-graphql-federation-code-first/users-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/31-graphql-federation-code-first/posts-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="samples/32-graphql-federation-schema-first.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-title">graphql federation schema first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/32-graphql-federation-schema-first/gateway.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/32-graphql-federation-schema-first/users-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/32-graphql-federation-schema-first/posts-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="samples/33-graphql-mercurius.html"><span class="toc-id">33-graphql-mercurius</span><span class="toc-title">graphql mercurius</span></a></li>
+<li class=""><a class="toc-link" href="samples/34-using-esm-packages.html"><span class="toc-id">34-using-esm-packages</span><span class="toc-title">using esm packages</span></a></li>
+<li class=""><a class="toc-link" href="samples/35-use-esm-package-after-node22.html"><span class="toc-id">35-use-esm-package-after-node22</span><span class="toc-title">use esm package after node22</span></a></li>
+<li class=""><a class="toc-link" href="samples/36-hmr-esm.html"><span class="toc-id">36-hmr-esm</span><span class="toc-title">hmr esm</span></a></li></ol>
+      </div>
+    </aside>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <main class="site-main" id="top">
+      
+      
+    <section class="hero">
+      <h1>NestJS Samples — Learning Guide</h1>
+      <p class="hero-lead">A beginner-friendly walkthrough of every official Nest sample. Each example is its own page with diagrams, inventories, and plain-language explanations of <strong>wired vs example</strong> code, <strong>decorators</strong>, and whether the app is a <strong>standalone HTTP server</strong>, <strong>microservice</strong>, or something else.</p>
+      <p class="hero-meta">42 pages · fully offline · copy the whole <code>site/</code> folder anywhere</p>
+    </section>
+
+    <section class="guide-panel guide-panel--prominent">
+      <h2>New to NestJS?</h2>
+      <p>Start with the <a href="glossary.html">Glossary</a> (Nest concepts + acronyms like TCP, RPC, JWT, GraphQL), then open <a href="samples/01-cats-app.html"><strong>01-cats-app</strong></a> — it is the reference HTTP app with modules, controllers, services, guards, and interceptors explained end to end.</p>
+      
+    <section class="guide-panel guide-panel--tips">
+      <h2>How to read each sample page</h2>
+      <ol class="reading-steps">
+        <li><strong>Understanding this sample</strong> — what kind of app it is and why it bootstraps that way.</li>
+        <li><strong>Core elements inventory</strong> — tables of modules, controllers, guards, etc. Focus on <span class="pill pill--wired">Wired</span> rows first.</li>
+        <li><strong>Diagrams</strong> — request flow and module relationships (already rendered; no live Mermaid needed offline).</li>
+        <li><strong>Decorator glossary</strong> — which <code>@</code> symbols appear and whether they come from Nest, your code, or a library.</li>
+      </ol>
+    </section>
+    </section>
+
+    
+      <section class="category-block" id="cat-start-here">
+        <h2>Start here</h2>
+        <p class="category-desc">The best samples to read first. They show the core NestJS building blocks before transports, databases, or GraphQL enter the picture.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/01-cats-app.html">
+      <span class="sample-card-id">01-cats-app</span>
+      <span class="sample-card-title">cats app</span>
+      <span class="sample-card-blurb">The canonical “first Nest app”: modules, controllers, services, guards, pipes, and interceptors — with clear wired vs example files.</span>
+    </a>
+    <a class="sample-card" href="samples/18-context.html">
+      <span class="sample-card-id">18-context</span>
+      <span class="sample-card-title">context</span>
+      <span class="sample-card-blurb">No HTTP server at all — `createApplicationContext` for scripts, CLI, or background workers.</span>
+    </a>
+    <a class="sample-card" href="samples/25-dynamic-modules.html">
+      <span class="sample-card-id">25-dynamic-modules</span>
+      <span class="sample-card-title">dynamic modules</span>
+      <span class="sample-card-blurb">Modules configured at runtime with `.forRoot()` / `.forFeature()`.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-http-web">
+        <h2>HTTP &amp; web servers</h2>
+        <p class="category-desc">Classic request/response APIs and server-side rendering. These apps listen for HTTP and return JSON, HTML, or files.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/10-fastify.html">
+      <span class="sample-card-id">10-fastify</span>
+      <span class="sample-card-title">fastify</span>
+      <span class="sample-card-blurb">Same Nest patterns but Fastify as the HTTP adapter (faster than Express).</span>
+    </a>
+    <a class="sample-card" href="samples/15-mvc.html">
+      <span class="sample-card-id">15-mvc</span>
+      <span class="sample-card-title">mvc</span>
+      <span class="sample-card-blurb">Server-rendered HTML views (Handlebars) — MVC style.</span>
+    </a>
+    <a class="sample-card" href="samples/17-mvc-fastify.html">
+      <span class="sample-card-id">17-mvc-fastify</span>
+      <span class="sample-card-title">mvc fastify</span>
+      <span class="sample-card-blurb">MVC rendering on top of Fastify.</span>
+    </a>
+    <a class="sample-card" href="samples/24-serve-static.html">
+      <span class="sample-card-id">24-serve-static</span>
+      <span class="sample-card-title">serve static</span>
+      <span class="sample-card-blurb">Serving static front-end files from the same Nest process.</span>
+    </a>
+    <a class="sample-card" href="samples/11-swagger.html">
+      <span class="sample-card-id">11-swagger</span>
+      <span class="sample-card-title">swagger</span>
+      <span class="sample-card-blurb">OpenAPI/Swagger UI generated from decorators.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-realtime">
+        <h2>Real-time &amp; streaming</h2>
+        <p class="category-desc">WebSockets, Server-Sent Events, and long-lived connections instead of one-shot HTTP requests.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/02-gateways.html">
+      <span class="sample-card-id">02-gateways</span>
+      <span class="sample-card-title">gateways</span>
+      <span class="sample-card-blurb">HTTP + Socket.IO in one process; shows how a WebSocket gateway sits beside REST.</span>
+    </a>
+    <a class="sample-card" href="samples/16-gateways-ws.html">
+      <span class="sample-card-id">16-gateways-ws</span>
+      <span class="sample-card-title">gateways ws</span>
+      <span class="sample-card-blurb">Native WebSocket gateway (`@WebSocketGateway`) without Socket.IO.</span>
+    </a>
+    <a class="sample-card" href="samples/28-sse.html">
+      <span class="sample-card-id">28-sse</span>
+      <span class="sample-card-title">sse</span>
+      <span class="sample-card-blurb">Server-Sent Events for one-way streaming to the browser.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-microservices">
+        <h2>Microservices &amp; messaging</h2>
+        <p class="category-desc">Apps that talk over TCP, gRPC, NATS, Redis, MQTT, or queues — not only HTTP. Includes hybrid apps that run HTTP and a message transport together.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/03-microservices.html">
+      <span class="sample-card-id">03-microservices</span>
+      <span class="sample-card-title">microservices</span>
+      <span class="sample-card-blurb">Hybrid app: HTTP on port 3001 plus a TCP microservice in the same Node process.</span>
+    </a>
+    <a class="sample-card" href="samples/04-grpc.html">
+      <span class="sample-card-id">04-grpc</span>
+      <span class="sample-card-title">grpc</span>
+      <span class="sample-card-blurb">Pure gRPC microservice using `@GrpcMethod` instead of HTTP routes.</span>
+    </a>
+    <a class="sample-card" href="samples/26-queues.html">
+      <span class="sample-card-id">26-queues</span>
+      <span class="sample-card-title">queues</span>
+      <span class="sample-card-blurb">Background jobs with Bull queues and `@Processor`.</span>
+    </a>
+    <a class="sample-card" href="samples/30-event-emitter.html">
+      <span class="sample-card-id">30-event-emitter</span>
+      <span class="sample-card-title">event emitter</span>
+      <span class="sample-card-blurb">In-process pub/sub with `@nestjs/event-emitter`.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-data">
+        <h2>Databases &amp; persistence</h2>
+        <p class="category-desc">Connecting Nest to SQL or MongoDB through TypeORM, Sequelize, Mongoose, or Prisma.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/05-sql-typeorm.html">
+      <span class="sample-card-id">05-sql-typeorm</span>
+      <span class="sample-card-title">sql typeorm</span>
+      <span class="sample-card-blurb">PostgreSQL via TypeORM entities and `@nestjs/typeorm`.</span>
+    </a>
+    <a class="sample-card" href="samples/06-mongoose.html">
+      <span class="sample-card-id">06-mongoose</span>
+      <span class="sample-card-title">mongoose</span>
+      <span class="sample-card-blurb">MongoDB with Mongoose schemas inside Nest modules.</span>
+    </a>
+    <a class="sample-card" href="samples/07-sequelize.html">
+      <span class="sample-card-id">07-sequelize</span>
+      <span class="sample-card-title">sequelize</span>
+      <span class="sample-card-blurb">SQL database through Sequelize models.</span>
+    </a>
+    <a class="sample-card" href="samples/13-mongo-typeorm.html">
+      <span class="sample-card-id">13-mongo-typeorm</span>
+      <span class="sample-card-title">mongo typeorm</span>
+      <span class="sample-card-blurb">TypeORM connected to MongoDB (document store via ORM).</span>
+    </a>
+    <a class="sample-card" href="samples/14-mongoose-base.html">
+      <span class="sample-card-id">14-mongoose-base</span>
+      <span class="sample-card-title">mongoose base</span>
+      <span class="sample-card-blurb">Minimal Mongoose setup without extra Nest wrappers.</span>
+    </a>
+    <a class="sample-card" href="samples/22-graphql-prisma.html">
+      <span class="sample-card-id">22-graphql-prisma</span>
+      <span class="sample-card-title">graphql prisma</span>
+      <span class="sample-card-blurb">GraphQL resolvers backed by Prisma ORM.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-graphql">
+        <h2>GraphQL</h2>
+        <p class="category-desc">Schema-first and code-first GraphQL APIs, federation across multiple services, and Fastify/Mercurius integration.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/12-graphql-schema-first.html">
+      <span class="sample-card-id">12-graphql-schema-first</span>
+      <span class="sample-card-title">graphql schema first</span>
+      <span class="sample-card-blurb">GraphQL with a `.graphql` schema file and generated types.</span>
+    </a>
+    <a class="sample-card" href="samples/23-graphql-code-first.html">
+      <span class="sample-card-id">23-graphql-code-first</span>
+      <span class="sample-card-title">graphql code first</span>
+      <span class="sample-card-blurb">GraphQL schema built from TypeScript decorators (`@ObjectType`, `@Query`).</span>
+    </a>
+    <a class="sample-card" href="samples/31-graphql-federation-code-first.html">
+      <span class="sample-card-id">31-graphql-federation-code-first</span>
+      <span class="sample-card-title">graphql federation code first</span>
+      <span class="sample-card-blurb">Multiple GraphQL subgraphs merged by a federation gateway (code-first).</span>
+    </a>
+    <a class="sample-card" href="samples/32-graphql-federation-schema-first.html">
+      <span class="sample-card-id">32-graphql-federation-schema-first</span>
+      <span class="sample-card-title">graphql federation schema first</span>
+      <span class="sample-card-blurb">Federation with SDL schema files across gateway and subgraphs.</span>
+    </a>
+    <a class="sample-card" href="samples/33-graphql-mercurius.html">
+      <span class="sample-card-id">33-graphql-mercurius</span>
+      <span class="sample-card-title">graphql mercurius</span>
+      <span class="sample-card-blurb">GraphQL on Fastify using the Mercurius driver.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-cross-cutting">
+        <h2>Security, caching &amp; serialization</h2>
+        <p class="category-desc">Authentication, response shaping, and performance helpers that wrap around your handlers.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/19-auth-jwt.html">
+      <span class="sample-card-id">19-auth-jwt</span>
+      <span class="sample-card-title">auth jwt</span>
+      <span class="sample-card-blurb">JWT authentication with Passport strategies and guards.</span>
+    </a>
+    <a class="sample-card" href="samples/20-cache.html">
+      <span class="sample-card-id">20-cache</span>
+      <span class="sample-card-title">cache</span>
+      <span class="sample-card-blurb">Response caching with `@nestjs/cache-manager`.</span>
+    </a>
+    <a class="sample-card" href="samples/21-serializer.html">
+      <span class="sample-card-id">21-serializer</span>
+      <span class="sample-card-title">serializer</span>
+      <span class="sample-card-blurb">Class-transformer interceptors to shape JSON output.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-tooling">
+        <h2>Build tooling &amp; module systems</h2>
+        <p class="category-desc">Webpack, Babel, ESM packages, and hot module replacement — how the sample is bundled and run, not a Nest feature per se.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/08-webpack.html">
+      <span class="sample-card-id">08-webpack</span>
+      <span class="sample-card-title">webpack</span>
+      <span class="sample-card-blurb">Custom Webpack build for the Nest app.</span>
+    </a>
+    <a class="sample-card" href="samples/09-babel-example.html">
+      <span class="sample-card-id">09-babel-example</span>
+      <span class="sample-card-title">babel example</span>
+      <span class="sample-card-blurb">Transpiling with Babel instead of plain `tsc`.</span>
+    </a>
+    <a class="sample-card" href="samples/34-using-esm-packages.html">
+      <span class="sample-card-id">34-using-esm-packages</span>
+      <span class="sample-card-title">using esm packages</span>
+      <span class="sample-card-blurb">Consuming native ESM npm packages from a Nest app.</span>
+    </a>
+    <a class="sample-card" href="samples/35-use-esm-package-after-node22.html">
+      <span class="sample-card-id">35-use-esm-package-after-node22</span>
+      <span class="sample-card-title">use esm package after node22</span>
+      <span class="sample-card-blurb">ESM interop patterns on modern Node.</span>
+    </a>
+    <a class="sample-card" href="samples/36-hmr-esm.html">
+      <span class="sample-card-id">36-hmr-esm</span>
+      <span class="sample-card-title">hmr esm</span>
+      <span class="sample-card-blurb">Hot module replacement during development with ESM.</span>
+    </a></div>
+      </section>
+      <section class="category-block" id="cat-other">
+        <h2>Other patterns</h2>
+        <p class="category-desc">File uploads, cron jobs, and smaller focused demos.</p>
+        <div class="sample-grid">
+    <a class="sample-card" href="samples/27-scheduling.html">
+      <span class="sample-card-id">27-scheduling</span>
+      <span class="sample-card-title">scheduling</span>
+      <span class="sample-card-blurb">Cron and interval tasks with `@nestjs/schedule`.</span>
+    </a>
+    <a class="sample-card" href="samples/29-file-upload.html">
+      <span class="sample-card-id">29-file-upload</span>
+      <span class="sample-card-title">file upload</span>
+      <span class="sample-card-blurb">Multipart file uploads with Multer integration.</span>
+    </a></div>
+      </section>
+
+    <section class="category-block" id="cat-federation-subs">
+      <h2>Federation sub-applications</h2>
+      <p class="category-desc">GraphQL federation samples split into multiple deployable apps (gateway + subgraphs). Each has its own page.</p>
+      <div class="sample-grid"></div>
+    </section>
+  
+      
+    </main>
+  </div>
+
+  <a href="#top" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+  <script src="assets/guide.js"></script>
+</body>
+</html>

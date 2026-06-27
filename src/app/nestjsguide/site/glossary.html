@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<!-- NestJS samples — offline page. Part of a self-contained static site; copy the whole site/ folder. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="description" content="NestJS glossary: TCP, RPC, HTTP, JWT, GraphQL, wired vs example, decorators, and every acronym used in the samples." />
+  <title>Glossary · NestJS Samples</title>
+  <link rel="stylesheet" href="assets/guide.css" />
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <a class="site-brand" href="index.html">
+      <span class="site-mark">N</span>
+      <div>
+        <p class="site-kicker">NestJS samples</p>
+        <p class="site-title">Learning guide</p>
+      </div>
+    </a>
+  </header>
+
+  <div class="site-shell">
+    <aside class="site-nav" id="site-nav" aria-label="Samples navigation">
+      <div class="nav-inner">
+        <p class="nav-heading"><a href="index.html">Home</a> · <a href="glossary.html">Glossary</a></p>
+        <p class="nav-heading">All samples (36)</p>
+        <ol class="toc-list"><li class=""><a class="toc-link" href="samples/01-cats-app.html"><span class="toc-id">01-cats-app</span><span class="toc-title">cats app</span></a></li>
+<li class=""><a class="toc-link" href="samples/02-gateways.html"><span class="toc-id">02-gateways</span><span class="toc-title">gateways</span></a></li>
+<li class=""><a class="toc-link" href="samples/03-microservices.html"><span class="toc-id">03-microservices</span><span class="toc-title">microservices</span></a></li>
+<li class=""><a class="toc-link" href="samples/04-grpc.html"><span class="toc-id">04-grpc</span><span class="toc-title">grpc</span></a></li>
+<li class=""><a class="toc-link" href="samples/05-sql-typeorm.html"><span class="toc-id">05-sql-typeorm</span><span class="toc-title">sql typeorm</span></a></li>
+<li class=""><a class="toc-link" href="samples/06-mongoose.html"><span class="toc-id">06-mongoose</span><span class="toc-title">mongoose</span></a></li>
+<li class=""><a class="toc-link" href="samples/07-sequelize.html"><span class="toc-id">07-sequelize</span><span class="toc-title">sequelize</span></a></li>
+<li class=""><a class="toc-link" href="samples/08-webpack.html"><span class="toc-id">08-webpack</span><span class="toc-title">webpack</span></a></li>
+<li class=""><a class="toc-link" href="samples/09-babel-example.html"><span class="toc-id">09-babel-example</span><span class="toc-title">babel example</span></a></li>
+<li class=""><a class="toc-link" href="samples/10-fastify.html"><span class="toc-id">10-fastify</span><span class="toc-title">fastify</span></a></li>
+<li class=""><a class="toc-link" href="samples/11-swagger.html"><span class="toc-id">11-swagger</span><span class="toc-title">swagger</span></a></li>
+<li class=""><a class="toc-link" href="samples/12-graphql-schema-first.html"><span class="toc-id">12-graphql-schema-first</span><span class="toc-title">graphql schema first</span></a></li>
+<li class=""><a class="toc-link" href="samples/13-mongo-typeorm.html"><span class="toc-id">13-mongo-typeorm</span><span class="toc-title">mongo typeorm</span></a></li>
+<li class=""><a class="toc-link" href="samples/14-mongoose-base.html"><span class="toc-id">14-mongoose-base</span><span class="toc-title">mongoose base</span></a></li>
+<li class=""><a class="toc-link" href="samples/15-mvc.html"><span class="toc-id">15-mvc</span><span class="toc-title">mvc</span></a></li>
+<li class=""><a class="toc-link" href="samples/16-gateways-ws.html"><span class="toc-id">16-gateways-ws</span><span class="toc-title">gateways ws</span></a></li>
+<li class=""><a class="toc-link" href="samples/17-mvc-fastify.html"><span class="toc-id">17-mvc-fastify</span><span class="toc-title">mvc fastify</span></a></li>
+<li class=""><a class="toc-link" href="samples/18-context.html"><span class="toc-id">18-context</span><span class="toc-title">context</span></a></li>
+<li class=""><a class="toc-link" href="samples/19-auth-jwt.html"><span class="toc-id">19-auth-jwt</span><span class="toc-title">auth jwt</span></a></li>
+<li class=""><a class="toc-link" href="samples/20-cache.html"><span class="toc-id">20-cache</span><span class="toc-title">cache</span></a></li>
+<li class=""><a class="toc-link" href="samples/21-serializer.html"><span class="toc-id">21-serializer</span><span class="toc-title">serializer</span></a></li>
+<li class=""><a class="toc-link" href="samples/22-graphql-prisma.html"><span class="toc-id">22-graphql-prisma</span><span class="toc-title">graphql prisma</span></a></li>
+<li class=""><a class="toc-link" href="samples/23-graphql-code-first.html"><span class="toc-id">23-graphql-code-first</span><span class="toc-title">graphql code first</span></a></li>
+<li class=""><a class="toc-link" href="samples/24-serve-static.html"><span class="toc-id">24-serve-static</span><span class="toc-title">serve static</span></a></li>
+<li class=""><a class="toc-link" href="samples/25-dynamic-modules.html"><span class="toc-id">25-dynamic-modules</span><span class="toc-title">dynamic modules</span></a></li>
+<li class=""><a class="toc-link" href="samples/26-queues.html"><span class="toc-id">26-queues</span><span class="toc-title">queues</span></a></li>
+<li class=""><a class="toc-link" href="samples/27-scheduling.html"><span class="toc-id">27-scheduling</span><span class="toc-title">scheduling</span></a></li>
+<li class=""><a class="toc-link" href="samples/28-sse.html"><span class="toc-id">28-sse</span><span class="toc-title">sse</span></a></li>
+<li class=""><a class="toc-link" href="samples/29-file-upload.html"><span class="toc-id">29-file-upload</span><span class="toc-title">file upload</span></a></li>
+<li class=""><a class="toc-link" href="samples/30-event-emitter.html"><span class="toc-id">30-event-emitter</span><span class="toc-title">event emitter</span></a></li>
+<li class=""><a class="toc-link" href="samples/31-graphql-federation-code-first.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-title">graphql federation code first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/31-graphql-federation-code-first/gateway.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/31-graphql-federation-code-first/users-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/31-graphql-federation-code-first/posts-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="samples/32-graphql-federation-schema-first.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-title">graphql federation schema first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/32-graphql-federation-schema-first/gateway.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/32-graphql-federation-schema-first/users-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="samples/32-graphql-federation-schema-first/posts-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="samples/33-graphql-mercurius.html"><span class="toc-id">33-graphql-mercurius</span><span class="toc-title">graphql mercurius</span></a></li>
+<li class=""><a class="toc-link" href="samples/34-using-esm-packages.html"><span class="toc-id">34-using-esm-packages</span><span class="toc-title">using esm packages</span></a></li>
+<li class=""><a class="toc-link" href="samples/35-use-esm-package-after-node22.html"><span class="toc-id">35-use-esm-package-after-node22</span><span class="toc-title">use esm package after node22</span></a></li>
+<li class=""><a class="toc-link" href="samples/36-hmr-esm.html"><span class="toc-id">36-hmr-esm</span><span class="toc-title">hmr esm</span></a></li></ol>
+      </div>
+    </aside>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <main class="site-main" id="top">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span>Glossary</span></nav>
+      
+    <section class="hero hero--compact">
+      <h1>Glossary</h1>
+      <p class="hero-lead">Plain-language definitions for NestJS concepts and the acronyms you will see in the samples — HTTP, TCP, RPC, gRPC, JWT, ORM, GraphQL, Redis, and more. Written for readers who are not senior backend developers yet.</p>
+    </section>
+
+    <nav class="glossary-toc" aria-label="Glossary sections">
+      <p class="glossary-toc-title">Jump to section</p>
+      <ol><li><a href="#section-nest">NestJS building blocks</a> <span class="glossary-toc-count">(21)</span></li><li><a href="#section-web-api">Web &amp; API terms</a> <span class="glossary-toc-count">(9)</span></li><li><a href="#section-network">Networking, RPC &amp; messaging</a> <span class="glossary-toc-count">(10)</span></li><li><a href="#section-data">Databases &amp; ORMs</a> <span class="glossary-toc-count">(9)</span></li><li><a href="#section-graphql">GraphQL &amp; federation</a> <span class="glossary-toc-count">(7)</span></li><li><a href="#section-tools">Tools, auth &amp; build</a> <span class="glossary-toc-count">(18)</span></li></ol>
+    </nav>
+
+    
+      <section class="glossary-section" id="section-nest">
+        <h2>NestJS building blocks</h2>
+        <div class="glossary-list">
+      <article class="glossary-entry" id="nestjs">
+        <h3>NestJS</h3>
+        <div class="markdown-body"><p>NestJS is a Node.js framework for building server-side applications. It organizes code into <strong>modules</strong>, routes HTTP (or other transports) through <strong>controllers</strong>, and puts business logic in injectable <strong>providers</strong> (often called services).</p>
+<p>It heavily uses TypeScript <strong>decorators</strong> (<code>@Module()</code>, <code>@Controller()</code>, <code>@Get()</code>…) so the framework can discover and wire classes automatically instead of you manually registering every route and dependency.</p></div>
+      </article>
+      <article class="glossary-entry" id="decorator">
+        <h3>Decorator</h3>
+        <div class="markdown-body"><p>A decorator is a function prefixed with <code>@</code> that attaches metadata to a class, method, or parameter. Nest reads that metadata at startup to know:</p>
+<ul>
+<li>which class is a controller and which URL prefix it owns (<code>@Controller('cats')</code>);</li>
+<li>which method handles <code>GET /cats</code> (<code>@Get()</code>);</li>
+<li>what to inject in the constructor (<code>@Injectable()</code> enables DI);</li>
+<li>which guards, pipes, or interceptors apply (<code>@UseGuards()</code>, etc.).</li>
+</ul>
+<p><strong>Why decorators?</strong> They keep routing and cross-cutting rules declarative and next to the code they affect, instead of scattered in a central router file. The same class reads as “this is a cats API” and Nest builds the HTTP surface from it.</p>
+<p>In inventory tables, decorators are grouped by library: <strong>@nestjs/common</strong> (framework), <strong>user-created</strong> (your metadata, e.g. <code>@Roles()</code>), or third-party (e.g. <strong>class-validator</strong>).</p></div>
+      </article>
+      <article class="glossary-entry" id="wired">
+        <h3>Wired vs Example</h3>
+        <div class="markdown-body"><p>Many samples include extra files under <code>common/</code> to <em>show</em> a pattern without turning every demo into a huge app. The inventory marks each element:</p>
+<ul>
+<li><strong>Wired</strong> — registered in a module (<code>providers</code>, <code>controllers</code>, <code>imports</code>), applied globally in <code>main.ts</code>, or attached with <code>@UseGuards()</code> / similar. Nest actually runs this code.</li>
+<li><strong>Example (not registered)</strong> — source file exists for you to read and copy, but nothing imports or applies it yet. It is <em>not</em> active in the running app.</li>
+</ul>
+<p>When learning, start with <strong>wired</strong> pieces — they define real behavior. Then open <strong>example</strong> files to see how you would add filters, middleware, or extra interceptors later.</p></div>
+      </article>
+      <article class="glossary-entry" id="module">
+        <h3>Module</h3>
+        <div class="markdown-body"><p>A module (<code>@Module({...})</code>) is a box that groups related controllers, providers, and imports. <code>AppModule</code> is the root; feature modules like <code>CatsModule</code> keep the app maintainable.</p>
+<p><code>imports</code> pulls in other modules. <code>providers</code> registers injectable classes. <code>controllers</code> registers HTTP/WebSocket/GraphQL entry points. <code>exports</code> makes providers available to modules that import this one.</p></div>
+      </article>
+      <article class="glossary-entry" id="controller">
+        <h3>Controller</h3>
+        <div class="markdown-body"><p>Controllers handle incoming requests. In HTTP apps they define routes (<code>@Get()</code>, <code>@Post()</code>…) and call services. In microservice apps the same class may use <code>@MessagePattern()</code> or <code>@EventPattern()</code> instead of HTTP verbs.</p>
+<p>Controllers should stay thin: validate input (often via pipes), delegate to a service, return the result.</p></div>
+      </article>
+      <article class="glossary-entry" id="provider">
+        <h3>Provider / Service</h3>
+        <div class="markdown-body"><p>Providers are classes marked <code>@Injectable()</code>. Nest creates one shared instance (by default) and injects it wherever the constructor asks for it — that is <strong>dependency injection (DI)</strong>.</p>
+<p>Services are providers that hold business logic and data access. Controllers depend on services; services can depend on other services or repositories.</p></div>
+      </article>
+      <article class="glossary-entry" id="di">
+        <h3>DI — Dependency injection</h3>
+        <div class="markdown-body"><p><strong>DI</strong> means Nest creates and connects your classes for you. Instead of <code>new CatsService()</code> inside a controller, you write <code>constructor(private catsService: CatsService)</code>.</p>
+<p>Nest’s container builds the graph, respects module boundaries, and makes testing easier (swap real services for mocks).</p></div>
+      </article>
+      <article class="glossary-entry" id="dto">
+        <h3>DTO — Data Transfer Object</h3>
+        <div class="markdown-body"><p>A <strong>DTO</strong> is a simple class that describes the shape of data going in or out — for example “a new cat has a <code>name</code> string and an <code>age</code> number.”</p>
+<p>Combined with <code>class-validator</code> decorators (<code>@IsString()</code>, …) and <code>ValidationPipe</code>, DTOs enforce input rules before your handler runs.</p></div>
+      </article>
+      <article class="glossary-entry" id="guard">
+        <h3>Guard</h3>
+        <div class="markdown-body"><p>Guards run <em>before</em> the route handler. They answer: “should this request proceed?” (<code>canActivate</code>). Authentication and authorization live here — e.g. <code>RolesGuard</code> checking JWT roles.</p>
+<p>Applied with <code>@UseGuards()</code> on a class or method, or globally in <code>main.ts</code>.</p>
+<p><strong><code>canActivate</code> return value:</strong></p>
+<ul>
+<li><code>true</code> — allow; Nest continues to pipes and the handler.</li>
+<li><code>false</code> — deny; Nest stops and sends <strong>403 Forbidden</strong> (by default).</li>
+</ul>
+<p>In sample <strong>01-cats-app</strong>, if a route has <em>no</em> <code>@Roles(...)</code> metadata, <code>RolesGuard</code> returns <code>true</code> (“no role rule on this route, pass through”). Only routes you mark with <code>@Roles</code> are checked. See <a href="#can-activate-walkthrough">RolesGuard walkthrough</a> and <a href="#reflector-custom">custom <code>@Roles</code> decorator</a>.</p></div>
+      </article>
+      <article class="glossary-entry" id="reflector-custom">
+        <h3>Custom decorator + Reflector (e.g. @Roles)</h3>
+        <div class="markdown-body"><p>Not every <code>@Something</code> comes from Nest. You can define your own decorator that attaches **metadata** (extra labels) to a class or method. Sample <strong>01-cats-app</strong> defines <code>@Roles</code> in one small file:</p>
+<pre><code>export const Roles = Reflector.createDecorator&lt;string[]&gt;();</code></pre>
+<p>That file is a **blueprint** (factory): it does not contain <code>'admin'</code>. When you write <code>@Roles(['admin'])</code> on <code>create()</code>, you **stamp** that route with “required roles = admin”.</p>
+<p><strong>Why <code>Reflector</code> from <code>@nestjs/core</code>?</strong> Nest’s core stores decorator metadata at startup. A guard injects <code>Reflector</code> and reads it back with <code>reflector.get(Roles, handler)</code>. You use the framework’s metadata system instead of inventing your own.</p>
+<p><strong>User-created vs Nest built-in:</strong> <code>@Get()</code> is Nest; <code>@Roles()</code> is yours, but it follows the same metadata + guard pattern Nest recommends.</p></div>
+      </article>
+      <article class="glossary-entry" id="can-activate-walkthrough">
+        <h3>RolesGuard logic (canActivate explained)</h3>
+        <div class="markdown-body"><p>From <strong>01-cats-app</strong> — what the guard does in plain language:</p>
+<ol>
+<li><code>reflector.get(Roles, handler)</code> — “What roles did this route require?” <code>['admin']</code> on <code>POST /cats</code>; nothing on <code>GET /cats</code>.</li>
+<li><code>if (!roles) return true</code> — No <code>@Roles</code> on this route → <strong>allow</strong>. Protection is opt-in per handler.</li>
+<li><code>request.user</code> — Who is calling; their roles should live on <code>user.roles</code>. (This sample does not set <code>user</code>; auth would, e.g. JWT sample 19.)</li>
+<li><code>user.roles.some(role =&gt; !!roles.find(item =&gt; item === role))</code> — “Does the user have at least one required role?”</li>
+</ol>
+<p><strong>Why <code>!!</code> before <code>roles.find(...)</code>?</strong> <code>find</code> returns the matched string (truthy) or <code>undefined</code> (falsy). <code>!!</code> converts that to a strict boolean <code>true</code>/<code>false</code> — a common JavaScript habit inside <code>.some()</code>.</p>
+<p><strong>Why <code>return true</code> when there are no required roles?</strong> <code>canActivate === true</code> means “let the request through.” Routes without <code>@Roles</code> are not role-protected by this guard.</p>
+<p>Full line-by-line table on the <a href="samples/01-cats-app.html">01-cats-app sample page</a>.</p></div>
+      </article>
+      <article class="glossary-entry" id="pipe">
+        <h3>Pipe</h3>
+        <div class="markdown-body"><p>Pipes transform or validate <em>input</em> (route params, query, body) before it reaches the handler. <code>ValidationPipe</code> runs class-validator on DTOs; custom pipes can parse <code>:id</code> strings into integers.</p></div>
+      </article>
+      <article class="glossary-entry" id="interceptor">
+        <h3>Interceptor</h3>
+        <div class="markdown-body"><p>Interceptors wrap the handler’s observable/stream. They can log, measure time, or transform the <em>output</em> (e.g. wrap every response in <code>{ data: … }</code>). They run after guards and pipes, around the actual business logic.</p></div>
+      </article>
+      <article class="glossary-entry" id="filter">
+        <h3>Exception filter</h3>
+        <div class="markdown-body"><p>Filters catch thrown exceptions and format the HTTP/RPC error response. Without a filter, Nest uses defaults; custom filters unify error JSON or map domain errors to status codes.</p></div>
+      </article>
+      <article class="glossary-entry" id="middleware">
+        <h3>Middleware</h3>
+        <div class="markdown-body"><p>Express/Fastify-style functions that run for matching routes <em>before</em> guards. Useful for request logging or generic headers. Registered in a module’s <code>configure(consumer)</code> method.</p></div>
+      </article>
+      <article class="glossary-entry" id="http-server">
+        <h3>HTTP server (standalone app)</h3>
+        <div class="markdown-body"><p>Bootstrap: <code>NestFactory.create(AppModule)</code> then <code>app.listen(port)</code>.</p>
+<p>This is the most common shape: a single Node process exposes REST (or similar) endpoints. Clients call URLs; Nest routes to controllers. Samples like <strong>01-cats-app</strong> and <strong>10-fastify</strong> are standalone HTTP apps.</p>
+<p><strong>Why standalone?</strong> One deployable unit, simple local dev (browser or <code>curl</code>), ideal for CRUD APIs and monoliths.</p></div>
+      </article>
+      <article class="glossary-entry" id="microservice">
+        <h3>Microservice only</h3>
+        <div class="markdown-body"><p>Bootstrap: <code>NestFactory.createMicroservice(AppModule, { transport: … })</code> — no public HTTP API port.</p>
+<p>The app listens on a <strong>transport</strong> (TCP, gRPC, NATS, Redis, MQTT, …). Other services call it with messages instead of opening <code>http://…</code> URLs. See <a href="#tcp">TCP</a>, <a href="#rpc">RPC</a>, and <a href="#transport">Transport</a> in this glossary.</p>
+<p><strong>Why?</strong> Split a big system into smaller deployable pieces, use efficient protocols, or plug into existing message infrastructure.</p></div>
+      </article>
+      <article class="glossary-entry" id="hybrid">
+        <h3>Hybrid HTTP + microservice</h3>
+        <div class="markdown-body"><p>Bootstrap: <code>NestFactory.create(AppModule)</code>, then <code>app.connectMicroservice(...)</code> and <code>app.startAllMicroservices()</code>, then <code>app.listen()</code>.</p>
+<p>One process runs <em>both</em> an HTTP server and a message listener. Sample <strong>03-microservices</strong> uses this: HTTP <code>GET /</code> triggers an internal <strong>TCP RPC</strong> handled in the same codebase.</p>
+<p><strong>Why?</strong> Gradual migration, admin HTTP endpoints beside workers, or demos that show client and server without two repos.</p></div>
+      </article>
+      <article class="glossary-entry" id="context">
+        <h3>Application context (no HTTP)</h3>
+        <div class="markdown-body"><p>Bootstrap: <code>NestFactory.createApplicationContext(AppModule)</code> — no network listener.</p>
+<p>Nest still builds the DI container and runs providers. Use this for CLI tools, cron scripts, queue consumers started manually, or integration tests that need real modules without opening a port.</p>
+<p>Sample <strong>18-context</strong> demonstrates fetching a service and calling methods, then closing the app.</p></div>
+      </article>
+      <article class="glossary-entry" id="gateway-ws">
+        <h3>WebSocket gateway</h3>
+        <div class="markdown-body"><p><code>@WebSocketGateway()</code> classes handle persistent socket connections (Socket.IO or native WebSocket). Methods use <code>@SubscribeMessage()</code> instead of <code>@Get()</code>. Used for chat, live updates, and games. See <a href="#websocket">WebSocket</a> and <a href="#socket-io">Socket.IO</a>.</p></div>
+      </article>
+      <article class="glossary-entry" id="message-pattern">
+        <h3>MessagePattern &amp; EventPattern</h3>
+        <div class="markdown-body"><p><code>@MessagePattern('cmd')</code> — request/response over a microservice transport: send a message, wait for a reply (like a remote function call). See <a href="#rpc">RPC</a>.</p>
+<p><code>@EventPattern('event')</code> — fire-and-forget: publish an event, no reply expected. Common with <a href="#pub-sub">pub/sub</a> systems like NATS or Redis.</p></div>
+      </article></div>
+      </section>
+      <section class="glossary-section" id="section-web-api">
+        <h2>Web &amp; API terms</h2>
+        <div class="glossary-list">
+      <article class="glossary-entry" id="http">
+        <h3>HTTP — HyperText Transfer Protocol</h3>
+        <div class="markdown-body"><p><strong>HTTP</strong> is the language browsers and most APIs use on the web. A client sends a <strong>request</strong> (“GET this URL”) and the server sends a <strong>response</strong> (status code + body).</p>
+<p>Common verbs: <code>GET</code> (read), <code>POST</code> (create), <code>PUT</code>/<code>PATCH</code> (update), <code>DELETE</code> (remove). Nest maps these with <code>@Get()</code>, <code>@Post()</code>, etc.</p>
+<p>When a sample says it “listens on port 3000,” it means an HTTP server is waiting for those requests.</p></div>
+      </article>
+      <article class="glossary-entry" id="api">
+        <h3>API — Application Programming Interface</h3>
+        <div class="markdown-body"><p>An <strong>API</strong> is a defined way for one program to use another. A REST API exposes URLs your front-end or mobile app can call. An internal API might only be used by your own microservices.</p>
+<p>In these samples, “the cats API” usually means the set of HTTP routes under <code>/cats</code> that create and list cats.</p></div>
+      </article>
+      <article class="glossary-entry" id="rest">
+        <h3>REST</h3>
+        <div class="markdown-body"><p><strong>REST</strong> is a popular style for HTTP APIs: each <strong>resource</strong> (users, cats, orders) has URLs, and you use HTTP verbs on them. Example: <code>GET /cats</code> lists cats, <code>POST /cats</code> creates one.</p>
+<p>It is not a strict standard but a set of conventions Nest controllers follow naturally.</p></div>
+      </article>
+      <article class="glossary-entry" id="json">
+        <h3>JSON — JavaScript Object Notation</h3>
+        <div class="markdown-body"><p><strong>JSON</strong> is a text format for structured data, easy for JavaScript and most languages to read:</p>
+<pre><code>{ "name": "Whiskers", "age": 3 }</code></pre>
+<p>Most Nest HTTP APIs send and receive JSON in request/response bodies unless the sample serves HTML or files instead.</p></div>
+      </article>
+      <article class="glossary-entry" id="crud">
+        <h3>CRUD</h3>
+        <div class="markdown-body"><p><strong>CRUD</strong> stands for the four basic database operations:</p>
+<ul>
+<li><strong>C</strong>reate — add a new record</li>
+<li><strong>R</strong>ead — fetch one or many</li>
+<li><strong>U</strong>pdate — change an existing record</li>
+<li><strong>D</strong>elete — remove a record</li>
+</ul>
+<p>Many samples are thin CRUD APIs over a database or in-memory store.</p></div>
+      </article>
+      <article class="glossary-entry" id="mvc">
+        <h3>MVC — Model, View, Controller</h3>
+        <div class="markdown-body"><p><strong>MVC</strong> splits an app into:</p>
+<ul>
+<li><strong>Model</strong> — data and business rules</li>
+<li><strong>View</strong> — what the user sees (HTML templates)</li>
+<li><strong>Controller</strong> — handles the request and picks a view</li>
+</ul>
+<p>Samples <strong>15-mvc</strong> and <strong>17-mvc-fastify</strong> render HTML with Handlebars instead of returning JSON.</p></div>
+      </article>
+      <article class="glossary-entry" id="openapi">
+        <h3>OpenAPI &amp; Swagger</h3>
+        <div class="markdown-body"><p><strong>OpenAPI</strong> (formerly Swagger spec) is a standard way to describe REST APIs: paths, parameters, response shapes. Tools can generate documentation and client code from it.</p>
+<p><strong>Swagger UI</strong> is a web page that lists your routes and lets you try them in the browser. Sample <strong>11-swagger</strong> auto-generates this from Nest decorators.</p></div>
+      </article>
+      <article class="glossary-entry" id="cors">
+        <h3>CORS — Cross-Origin Resource Sharing</h3>
+        <div class="markdown-body"><p><strong>CORS</strong> is a browser security rule. If your front-end runs on <code>http://localhost:5173</code> but your API is on <code>http://localhost:3000</code>, the browser blocks requests unless the API explicitly allows that origin.</p>
+<p>When you see CORS mentioned in server config, it means “which front-end URLs may call this API from a browser.”</p></div>
+      </article>
+      <article class="glossary-entry" id="sse">
+        <h3>SSE — Server-Sent Events</h3>
+        <div class="markdown-body"><p><strong>SSE</strong> lets the server push a stream of updates to the browser over a single long-lived HTTP connection — one direction only (server → client).</p>
+<p>Lighter than WebSockets when you only need server push (live logs, stock ticks). Sample <strong>28-sse</strong> uses Nest’s <code>@Sse()</code> decorator.</p></div>
+      </article></div>
+      </section>
+      <section class="glossary-section" id="section-network">
+        <h2>Networking, RPC &amp; messaging</h2>
+        <div class="glossary-list">
+      <article class="glossary-entry" id="tcp">
+        <h3>TCP — Transmission Control Protocol</h3>
+        <div class="markdown-body"><p><strong>TCP</strong> is a low-level way two programs on a network maintain a reliable connection and exchange bytes. It sits below HTTP — HTTP actually runs on top of TCP.</p>
+<p>In sample <strong>03-microservices</strong>, Nest’s <code>Transport.TCP</code> means services send structured messages over a TCP socket instead of REST URLs. You don’t browse to “tcp://…” in a browser; another Nest process (or client) connects programmatically.</p>
+<p>Think of TCP as a phone line; the app defines what language you speak on that line (Nest’s message format).</p></div>
+      </article>
+      <article class="glossary-entry" id="rpc">
+        <h3>RPC — Remote Procedure Call</h3>
+        <div class="markdown-body"><p><strong>RPC</strong> means calling a function that runs on another machine (or another process) as if it were local. You send “run <code>sum</code> with <code>[1,2,3]</code>”; the remote side executes and sends back <code>6</code>.</p>
+<p>In Nest, <code>@MessagePattern({ cmd: 'sum' })</code> marks the handler for such a call. Sample <strong>03-microservices</strong> demonstrates HTTP triggering an internal TCP RPC.</p>
+<p>RPC is the <em>idea</em>; TCP, gRPC, and Redis are different <em>ways</em> to carry RPC messages.</p></div>
+      </article>
+      <article class="glossary-entry" id="grpc">
+        <h3>gRPC — Google Remote Procedure Call</h3>
+        <div class="markdown-body"><p><strong>gRPC</strong> is Google’s modern RPC system. It uses <strong>Protocol Buffers</strong> (binary contracts defined in <code>.proto</code> files) and HTTP/2 under the hood — fast and strongly typed.</p>
+<p>Sample <strong>04-grpc</strong> is a Nest microservice with no REST routes; handlers use <code>@GrpcMethod()</code> instead of <code>@Get()</code>.</p>
+<p>Use gRPC when services need efficient internal communication and shared schemas, not when humans need to “open a URL in Chrome.”</p></div>
+      </article>
+      <article class="glossary-entry" id="transport">
+        <h3>Transport (Nest microservices)</h3>
+        <div class="markdown-body"><p>In Nest, a <strong>transport</strong> is the wire protocol your microservice listens on. Examples:</p>
+<ul>
+<li><strong>TCP</strong> — direct socket connection (sample 03)</li>
+<li><strong>GRPC</strong> — gRPC protocol (sample 04)</li>
+<li><strong>REDIS</strong> — messages via Redis pub/sub</li>
+<li><strong>NATS</strong>, <strong>MQTT</strong>, <strong>Kafka</strong> — message brokers (integration tests in this repo)</li>
+</ul>
+<p>You choose transport in <code>createMicroservice({ transport: Transport.TCP, … })</code> or <code>connectMicroservice(...)</code>.</p></div>
+      </article>
+      <article class="glossary-entry" id="websocket">
+        <h3>WebSocket</h3>
+        <div class="markdown-body"><p>A <strong>WebSocket</strong> is a persistent, two-way connection between browser and server. Either side can send messages anytime — unlike HTTP where the client always initiates one request/response.</p>
+<p>Used for chat, multiplayer games, live dashboards. Nest exposes them via <code>@WebSocketGateway()</code> (samples <strong>02-gateways</strong>, <strong>16-gateways-ws</strong>).</p></div>
+      </article>
+      <article class="glossary-entry" id="socket-io">
+        <h3>Socket.IO</h3>
+        <div class="markdown-body"><p><strong>Socket.IO</strong> is a library on top of WebSockets with fallbacks and rooms/namespaces. Sample <strong>02-gateways</strong> uses the default Socket.IO adapter.</p>
+<p>Sample <strong>16-gateways-ws</strong> uses the native WebSocket driver instead — fewer features, less overhead.</p></div>
+      </article>
+      <article class="glossary-entry" id="pub-sub">
+        <h3>Pub/sub — Publish / subscribe</h3>
+        <div class="markdown-body"><p><strong>Pub/sub</strong> is a messaging pattern: publishers send events to a channel; subscribers listen without knowing who sent it.</p>
+<p>Example: when an order is placed, one service publishes <code>order.created</code>; email and inventory services each subscribe and react.</p>
+<p>NATS, Redis, MQTT, and <code>@nestjs/event-emitter</code> (in-process) all use variations of this idea.</p></div>
+      </article>
+      <article class="glossary-entry" id="nats">
+        <h3>NATS</h3>
+        <div class="markdown-body"><p><strong>NATS</strong> is a lightweight, high-performance <strong>message broker</strong> — a server that routes pub/sub and request/reply messages between apps.</p>
+<p>Common in microservice architectures when you want decoupled services without HTTP between every pair. Nest supports NATS as a microservice transport (see integration tests in this repository).</p></div>
+      </article>
+      <article class="glossary-entry" id="mqtt">
+        <h3>MQTT</h3>
+        <div class="markdown-body"><p><strong>MQTT</strong> is a minimal pub/sub protocol popular in IoT (sensors, devices on slow networks).</p>
+<p>Messages are published to <strong>topics</strong> (like <code>sensors/temperature</code>). Nest can connect as an MQTT microservice transport when devices or brokers speak MQTT.</p></div>
+      </article>
+      <article class="glossary-entry" id="redis">
+        <h3>Redis</h3>
+        <div class="markdown-body"><p><strong>Redis</strong> is an in-memory data store, often used for:</p>
+<ul>
+<li><strong>Caching</strong> — store API responses temporarily (sample <strong>20-cache</strong> may use cache-manager with Redis)</li>
+<li><strong>Job queues</strong> — Bull/BullMQ store jobs in Redis (sample <strong>26-queues</strong>)</li>
+<li><strong>Pub/sub</strong> — Nest microservice transport over Redis channels</li>
+</ul>
+<p>Fast because data lives in RAM; usually backed by disk persistence options for durability.</p></div>
+      </article></div>
+      </section>
+      <section class="glossary-section" id="section-data">
+        <h2>Databases &amp; ORMs</h2>
+        <div class="glossary-list">
+      <article class="glossary-entry" id="sql">
+        <h3>SQL</h3>
+        <div class="markdown-body"><p><strong>SQL</strong> (Structured Query Language) is the standard language for talking to relational databases: tables with rows and columns, joins, transactions.</p>
+<p>Examples: PostgreSQL, MySQL, SQLite. Samples <strong>05-sql-typeorm</strong> and <strong>07-sequelize</strong> use SQL databases.</p></div>
+      </article>
+      <article class="glossary-entry" id="orm">
+        <h3>ORM — Object-Relational Mapping</h3>
+        <div class="markdown-body"><p>An <strong>ORM</strong> lets you work with database rows as TypeScript classes instead of writing raw SQL everywhere.</p>
+<p>You define an <code>User</code> entity class; the ORM generates queries to insert and fetch users. Trade-off: convenience vs fine-grained SQL control.</p></div>
+      </article>
+      <article class="glossary-entry" id="typeorm">
+        <h3>TypeORM</h3>
+        <div class="markdown-body"><p><strong>TypeORM</strong> is a TypeScript ORM integrated with Nest via <code>@nestjs/typeorm</code>. Entities use decorators like <code>@Entity()</code>, <code>@Column()</code>.</p>
+<p>Used in samples <strong>05-sql-typeorm</strong> (PostgreSQL) and <strong>13-mongo-typeorm</strong> (MongoDB via TypeORM’s document support).</p></div>
+      </article>
+      <article class="glossary-entry" id="sequelize">
+        <h3>Sequelize</h3>
+        <div class="markdown-body"><p><strong>Sequelize</strong> is another Node ORM with a model-based API. Sample <strong>07-sequelize</strong> shows Nest’s <code>@nestjs/sequelize</code> integration.</p>
+<p>Similar goal to TypeORM; teams often pick one ORM and stick with it across a project.</p></div>
+      </article>
+      <article class="glossary-entry" id="mongoose">
+        <h3>Mongoose</h3>
+        <div class="markdown-body"><p><strong>Mongoose</strong> is the main ODM (Object Document Mapper) for <strong>MongoDB</strong> in Node. Schemas define flexible JSON-like documents.</p>
+<p>Samples <strong>06-mongoose</strong> and <strong>14-mongoose-base</strong> store data in MongoDB collections instead of SQL tables.</p></div>
+      </article>
+      <article class="glossary-entry" id="prisma">
+        <h3>Prisma</h3>
+        <div class="markdown-body"><p><strong>Prisma</strong> is a modern database toolkit: schema in <code>schema.prisma</code>, generated type-safe client, migrations. Sample <strong>22-graphql-prisma</strong> uses Prisma with GraphQL resolvers.</p>
+<p>Often chosen for strong TypeScript autocomplete and clear migration workflow.</p></div>
+      </article>
+      <article class="glossary-entry" id="mongodb">
+        <h3>MongoDB</h3>
+        <div class="markdown-body"><p><strong>MongoDB</strong> is a document database — data is stored as flexible JSON-like documents in collections, not fixed SQL tables.</p>
+<p>Good for nested data and rapid schema changes. Accessed in these samples via Mongoose or TypeORM.</p></div>
+      </article>
+      <article class="glossary-entry" id="postgresql">
+        <h3>PostgreSQL</h3>
+        <div class="markdown-body"><p><strong>PostgreSQL</strong> (often “Postgres”) is a powerful open-source relational SQL database. Sample <strong>05-sql-typeorm</strong> connects Nest to Postgres for typed entities and relations.</p></div>
+      </article>
+      <article class="glossary-entry" id="sqlite">
+        <h3>SQLite</h3>
+        <div class="markdown-body"><p><strong>SQLite</strong> is a small SQL database stored in a single file on disk — no separate database server to install.</p>
+<p>Sample <strong>22-graphql-prisma</strong> uses SQLite for easy local dev (<code>dev.db</code>).</p></div>
+      </article></div>
+      </section>
+      <section class="glossary-section" id="section-graphql">
+        <h2>GraphQL &amp; federation</h2>
+        <div class="glossary-list">
+      <article class="glossary-entry" id="graphql">
+        <h3>GraphQL</h3>
+        <div class="markdown-body"><p><strong>GraphQL</strong> is an API style where the client sends a <strong>query</strong> describing exactly which fields it wants (<code>{ user { name email } }</code>), and the server returns JSON matching that shape.</p>
+<p>One endpoint (often <code>/graphql</code>) replaces many REST URLs. Nest supports GraphQL via <code>@nestjs/graphql</code> with code-first or schema-first setup.</p></div>
+      </article>
+      <article class="glossary-entry" id="graphql-resolver">
+        <h3>GraphQL resolver</h3>
+        <div class="markdown-body"><p>A <strong>resolver</strong> is the GraphQL equivalent of a controller. <code>@Resolver()</code> classes define <code>@Query()</code> (read), <code>@Mutation()</code> (write), and <code>@Subscription()</code> (live updates) handlers.</p></div>
+      </article>
+      <article class="glossary-entry" id="sdl">
+        <h3>SDL — Schema Definition Language</h3>
+        <div class="markdown-body"><p><strong>SDL</strong> is the text syntax for GraphQL schemas:</p>
+<pre><code>type User {
+  id: ID!
+  name: String!
+}</code></pre>
+<p><strong>Schema-first</strong> samples (e.g. <strong>12-graphql-schema-first</strong>) write <code>.graphql</code> files first, then generate TypeScript types. <strong>Code-first</strong> builds the schema from TypeScript decorators instead.</p></div>
+      </article>
+      <article class="glossary-entry" id="federation">
+        <h3>GraphQL federation</h3>
+        <div class="markdown-body"><p><strong>Federation</strong> splits one GraphQL API across multiple backend services. Each service owns part of the graph; a <strong>gateway</strong> merges them so clients still see a single endpoint.</p>
+<p>Samples <strong>31</strong> and <strong>32</strong> run separate apps for users, posts, and gateway — closer to how large companies structure GraphQL at scale.</p></div>
+      </article>
+      <article class="glossary-entry" id="subgraph">
+        <h3>Subgraph</h3>
+        <div class="markdown-body"><p>A <strong>subgraph</strong> is one service’s slice of a federated GraphQL API. The users app might own the <code>User</code> type; the posts app owns <code>Post</code>.</p>
+<p>Each subgraph runs its own Nest app with <code>/graphql</code>; the gateway stitches them together.</p></div>
+      </article>
+      <article class="glossary-entry" id="apollo">
+        <h3>Apollo</h3>
+        <div class="markdown-body"><p><strong>Apollo</strong> is a popular GraphQL ecosystem (server libraries, federation tools, client). Many Nest GraphQL samples use Apollo-compatible drivers and federation directives like <code>@key</code> for entity identity.</p></div>
+      </article>
+      <article class="glossary-entry" id="mercurius">
+        <h3>Mercurius</h3>
+        <div class="markdown-body"><p><strong>Mercurius</strong> is a GraphQL server plugin for <strong>Fastify</strong> — an alternative to the default Express-based GraphQL setup. Sample <strong>33-graphql-mercurius</strong> combines Fastify + Mercurius for performance.</p></div>
+      </article></div>
+      </section>
+      <section class="glossary-section" id="section-tools">
+        <h2>Tools, auth &amp; build</h2>
+        <div class="glossary-list">
+      <article class="glossary-entry" id="nodejs">
+        <h3>Node.js</h3>
+        <div class="markdown-body"><p><strong>Node.js</strong> runs JavaScript and TypeScript outside the browser — on servers, CLIs, and build tools. NestJS is built on Node.</p>
+<p>You install Node (which includes <strong>npm</strong>) to run <code>npm install</code> and <code>npm run start:dev</code> in each sample.</p></div>
+      </article>
+      <article class="glossary-entry" id="typescript">
+        <h3>TypeScript</h3>
+        <div class="markdown-body"><p><strong>TypeScript</strong> is JavaScript with optional static types (<code>name: string</code>). Nest samples are mostly TypeScript; it catches mistakes before runtime and powers decorator metadata.</p>
+<p>Sample <strong>09-babel-example</strong> shows the same ideas in plain JavaScript with Babel.</p>
+<p>See also: <a href="#typescript-class-interface-type">Classes, interfaces &amp; types</a> — what they are and why Nest uses all three.</p></div>
+      </article>
+      <article class="glossary-entry" id="typescript-class-interface-type">
+        <h3>Classes, interfaces &amp; types (TypeScript)</h3>
+        <div class="markdown-body"><p>Nest apps are TypeScript. Three shapes show up everywhere — they look similar but do different jobs.</p>
+
+<h4>Class</h4>
+<p>A <strong>class</strong> is a blueprint for <em>objects that exist at runtime</em>. It can have:</p>
+<ul>
+<li><strong>Properties</strong> — data on the instance (<code>name: string</code>)</li>
+<li><strong>Methods</strong> — functions on the instance (<code>findAll()</code>)</li>
+<li><strong>Decorators</strong> — <code>@Injectable()</code>, <code>@Controller()</code>, <code>@IsString()</code> (Nest/class-validator read these when the app starts)</li>
+</ul>
+<p>In Nest, almost everything “alive” is a class: controllers, services, guards, DTOs. Example from <strong>01-cats-app</strong>:</p>
+<pre><code>export class CatsService {
+  private readonly cats: Cat[] = [];
+  findAll(): Promise&lt;Cat[]&gt; { ... }
+}</code></pre>
+<p><strong>Why classes here?</strong> Nest’s DI container <em>instantiates</em> classes, injects dependencies into constructors, and reads decorator metadata from the class prototype.</p>
+
+<h4>Interface</h4>
+<p>An <strong>interface</strong> describes the <em>shape</em> of an object — field names and types — but <strong>does not exist at runtime</strong>. TypeScript removes it when compiling to JavaScript.</p>
+<pre><code>export interface Cat {
+  name: string;
+  age: number;
+  breed: string;
+}</code></pre>
+<p><strong>Why interfaces?</strong> Document “what a cat object looks like” without creating a class. <code>CatsService</code> stores <code>Cat[]</code> and returns <code>Promise&lt;Cat[]&gt;</code> so editors and the compiler catch typos (<code>naem</code> instead of <code>name</code>).</p>
+<p>Interfaces cannot have decorators or methods with bodies in the usual Nest DTO sense — they are type-only.</p>
+
+<h4>Type (type alias)</h4>
+<p>A <strong>type</strong> (from <code>type X = …</code>) also describes shapes, often for unions, primitives, or aliases:</p>
+<pre><code>type Role = 'admin' | 'user';
+type CatId = number;
+type CatList = Cat[];</code></pre>
+<p><strong>Interface vs type — practical difference:</strong></p>
+<ul>
+<li><strong>Interface</strong> — best for object shapes you may <em>extend</em> (<code>interface Admin extends User</code>). Common for domain models like <code>Cat</code>.</li>
+<li><strong>Type alias</strong> — best for unions, tuples, mapped types, or “alias this complex shape”. Either works for simple object shapes; teams pick one style.</li>
+</ul>
+<p>Both are erased at runtime — only TypeScript checks them while you code.</p>
+
+<h4>Side-by-side in 01-cats-app</h4>
+<table>
+<thead><tr><th>Name</th><th>Kind</th><th>File</th><th>Runtime?</th><th>Role in this sample</th></tr></thead>
+<tbody>
+<tr><td><code>CatsService</code></td><td>Class</td><td><code>cats.service.ts</code></td><td>Yes — Nest creates an instance</td><td>Business logic + in-memory store</td></tr>
+<tr><td><code>CreateCatDto</code></td><td>Class</td><td><code>create-cat.dto.ts</code></td><td>Yes — <code>ValidationPipe</code> uses class + decorators</td><td>Incoming POST body shape + validation</td></tr>
+<tr><td><code>Cat</code></td><td>Interface</td><td><code>cat.interface.ts</code></td><td>No — types only</td><td>Shape of a cat returned/stored internally</td></tr>
+</tbody>
+</table>
+
+<h4>Why DTO is a class but Cat is an interface</h4>
+<p><code>CreateCatDto</code> <em>must</em> be a class because <code>class-validator</code> decorators (<code>@IsString()</code>) attach to the class at runtime and <code>ValidationPipe</code> inspects them.</p>
+<p><code>Cat</code> is only used for typing inside your code — no validation decorators needed — so a lightweight <strong>interface</strong> is enough.</p>
+
+<h4>Why any of this matters in Nest</h4>
+<ul>
+<li><strong>Fewer bugs</strong> — wrong property names or types fail at compile time.</li>
+<li><strong>Clear contracts</strong> — controllers, services, and DTOs document what flows through the API.</li>
+<li><strong>Framework features</strong> — DI, validation, and Swagger often require <strong>classes</strong> with decorators; interfaces/types support the type checker only.</li>
+<li><strong>Readable samples</strong> — seeing <code>Cat</code> vs <code>CreateCatDto</code> teaches input (request) vs domain (your app’s model) separation.</li>
+</ul></div>
+      </article>
+      <article class="glossary-entry" id="npm">
+        <h3>npm</h3>
+        <div class="markdown-body"><p><strong>npm</strong> (Node Package Manager) installs open-source libraries listed in <code>package.json</code>. <code>npm install</code> downloads dependencies; <code>npm run …</code> runs scripts like starting the dev server.</p></div>
+      </article>
+      <article class="glossary-entry" id="esm">
+        <h3>ESM — ECMAScript Modules</h3>
+        <div class="markdown-body"><p><strong>ESM</strong> is the modern JavaScript module system: <code>import</code> and <code>export</code> syntax. Older Node code often used CommonJS (<code>require</code>).</p>
+<p>Samples <strong>34</strong>, <strong>35</strong>, and <strong>36</strong> deal with ESM-only npm packages and hot reload — relevant as the Node ecosystem shifts toward ESM.</p></div>
+      </article>
+      <article class="glossary-entry" id="cli">
+        <h3>CLI — Command Line Interface</h3>
+        <div class="markdown-body"><p>A <strong>CLI</strong> is a program you run in a terminal (no graphical UI). The Nest CLI (<code>nest generate</code>) scaffolds modules and controllers.</p>
+<p>Sample <strong>18-context</strong> uses an application context suitable for CLI scripts that need services without HTTP.</p></div>
+      </article>
+      <article class="glossary-entry" id="express">
+        <h3>Express</h3>
+        <div class="markdown-body"><p><strong>Express</strong> is the default HTTP engine under many Nest apps — a minimal Node web framework. Nest adds structure (modules, DI) on top.</p>
+<p>Sample <strong>15-mvc</strong> uses Express-specific view APIs via <code>NestExpressApplication</code>.</p></div>
+      </article>
+      <article class="glossary-entry" id="fastify">
+        <h3>Fastify</h3>
+        <div class="markdown-body"><p><strong>Fastify</strong> is an alternative HTTP engine focused on speed and low overhead. Nest supports it via <code>NestFactory.create(..., new FastifyAdapter())</code>.</p>
+<p>Samples <strong>10-fastify</strong>, <strong>17-mvc-fastify</strong>, and <strong>33-graphql-mercurius</strong> use Fastify instead of Express.</p></div>
+      </article>
+      <article class="glossary-entry" id="jwt">
+        <h3>JWT — JSON Web Token</h3>
+        <div class="markdown-body"><p>A <strong>JWT</strong> is a compact, signed string that proves “this user logged in successfully.” The server creates it after login; the client sends it on later requests (often in an <code>Authorization: Bearer …</code> header).</p>
+<p>Sample <strong>19-auth-jwt</strong> uses JWT with Passport strategies and guards — stateless auth without server-side sessions.</p></div>
+      </article>
+      <article class="glossary-entry" id="passport">
+        <h3>Passport</h3>
+        <div class="markdown-body"><p><strong>Passport</strong> is a Node authentication library with “strategies” (local username/password, JWT, OAuth, etc.). Nest wraps it in <code>@nestjs/passport</code> and connects strategies to guards.</p></div>
+      </article>
+      <article class="glossary-entry" id="bull">
+        <h3>Bull (job queue)</h3>
+        <div class="markdown-body"><p><strong>Bull</strong> is a Redis-backed job queue for Node. You <strong>enqueue</strong> work (e.g. “transcode this audio”); a <strong>processor</strong> picks it up asynchronously.</p>
+<p>Sample <strong>26-queues</strong> uses <code>@Processor()</code> and <code>@Process()</code> — HTTP triggers jobs, workers handle them in the background.</p></div>
+      </article>
+      <article class="glossary-entry" id="multer">
+        <h3>Multer (file uploads)</h3>
+        <div class="markdown-body"><p><strong>Multer</strong> handles <code>multipart/form-data</code> — how browsers upload files in forms. Nest integrates it via <code>@UploadedFile()</code> and <code>FileInterceptor</code>.</p>
+<p>Sample <strong>29-file-upload</strong> demonstrates receiving files over HTTP.</p></div>
+      </article>
+      <article class="glossary-entry" id="cron">
+        <h3>Cron (scheduled tasks)</h3>
+        <div class="markdown-body"><p><strong>Cron</strong> jobs run on a schedule (“every day at midnight”, “every 5 seconds”). Named after the Unix <code>cron</code> scheduler.</p>
+<p>Sample <strong>27-scheduling</strong> uses <code>@Cron()</code>, <code>@Interval()</code>, and <code>@Timeout()</code> from <code>@nestjs/schedule</code>.</p></div>
+      </article>
+      <article class="glossary-entry" id="webpack">
+        <h3>Webpack</h3>
+        <div class="markdown-body"><p><strong>Webpack</strong> bundles many source files into fewer outputs for deployment or dev. Sample <strong>08-webpack</strong> uses Webpack with hot reload instead of plain <code>tsc</code> during development.</p></div>
+      </article>
+      <article class="glossary-entry" id="babel">
+        <h3>Babel</h3>
+        <div class="markdown-body"><p><strong>Babel</strong> transpiles modern (or experimental) JavaScript into something Node understands — including decorators in sample <strong>09-babel-example</strong>, which runs Nest without TypeScript.</p></div>
+      </article>
+      <article class="glossary-entry" id="hmr">
+        <h3>HMR — Hot Module Replacement</h3>
+        <div class="markdown-body"><p><strong>HMR</strong> swaps changed code into a running app without a full restart — faster feedback while coding. Sample <strong>36-hmr-esm</strong> and <strong>08-webpack</strong> demonstrate HMR with Nest.</p>
+<p>Development convenience only; production builds still use normal compiles.</p></div>
+      </article>
+      <article class="glossary-entry" id="handlebars">
+        <h3>Handlebars</h3>
+        <div class="markdown-body"><p><strong>Handlebars</strong> is an HTML template engine — you write <code>.hbs</code> files with placeholders; the server fills them with data and returns HTML.</p>
+<p>Used in MVC samples for server-rendered pages instead of JSON APIs.</p></div>
+      </article>
+      <article class="glossary-entry" id="yaml">
+        <h3>YAML</h3>
+        <div class="markdown-body"><p><strong>YAML</strong> is a human-readable config format (indentation-based), often used for Docker Compose, CI configs, and OpenAPI files. Easier to read than JSON for long configuration.</p></div>
+      </article></div>
+      </section>
+  
+      
+    </main>
+  </div>
+
+  <a href="#top" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+  <script src="assets/guide.js"></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- NestJS samples — offline page. Part of a self-contained static site; copy the whole site/ folder. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="description" content="Multiple GraphQL subgraphs merged by a federation gateway (code-first)." />
+  <title>31-graphql-federation-code-first · users-application · NestJS Samples</title>
+  <link rel="stylesheet" href="../../assets/guide.css" />
+</head>
+<body>
+  <header class="site-header">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <a class="site-brand" href="../../index.html">
+      <span class="site-mark">N</span>
+      <div>
+        <p class="site-kicker">NestJS samples</p>
+        <p class="site-title">Learning guide</p>
+      </div>
+    </a>
+  </header>
+
+  <div class="site-shell">
+    <aside class="site-nav" id="site-nav" aria-label="Samples navigation">
+      <div class="nav-inner">
+        <p class="nav-heading"><a href="../../index.html">Home</a> · <a href="../../glossary.html">Glossary</a></p>
+        <p class="nav-heading">All samples (36)</p>
+        <ol class="toc-list"><li class=""><a class="toc-link" href="../../samples/01-cats-app.html"><span class="toc-id">01-cats-app</span><span class="toc-title">cats app</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/02-gateways.html"><span class="toc-id">02-gateways</span><span class="toc-title">gateways</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/03-microservices.html"><span class="toc-id">03-microservices</span><span class="toc-title">microservices</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/04-grpc.html"><span class="toc-id">04-grpc</span><span class="toc-title">grpc</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/05-sql-typeorm.html"><span class="toc-id">05-sql-typeorm</span><span class="toc-title">sql typeorm</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/06-mongoose.html"><span class="toc-id">06-mongoose</span><span class="toc-title">mongoose</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/07-sequelize.html"><span class="toc-id">07-sequelize</span><span class="toc-title">sequelize</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/08-webpack.html"><span class="toc-id">08-webpack</span><span class="toc-title">webpack</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/09-babel-example.html"><span class="toc-id">09-babel-example</span><span class="toc-title">babel example</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/10-fastify.html"><span class="toc-id">10-fastify</span><span class="toc-title">fastify</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/11-swagger.html"><span class="toc-id">11-swagger</span><span class="toc-title">swagger</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/12-graphql-schema-first.html"><span class="toc-id">12-graphql-schema-first</span><span class="toc-title">graphql schema first</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/13-mongo-typeorm.html"><span class="toc-id">13-mongo-typeorm</span><span class="toc-title">mongo typeorm</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/14-mongoose-base.html"><span class="toc-id">14-mongoose-base</span><span class="toc-title">mongoose base</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/15-mvc.html"><span class="toc-id">15-mvc</span><span class="toc-title">mvc</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/16-gateways-ws.html"><span class="toc-id">16-gateways-ws</span><span class="toc-title">gateways ws</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/17-mvc-fastify.html"><span class="toc-id">17-mvc-fastify</span><span class="toc-title">mvc fastify</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/18-context.html"><span class="toc-id">18-context</span><span class="toc-title">context</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/19-auth-jwt.html"><span class="toc-id">19-auth-jwt</span><span class="toc-title">auth jwt</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/20-cache.html"><span class="toc-id">20-cache</span><span class="toc-title">cache</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/21-serializer.html"><span class="toc-id">21-serializer</span><span class="toc-title">serializer</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/22-graphql-prisma.html"><span class="toc-id">22-graphql-prisma</span><span class="toc-title">graphql prisma</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/23-graphql-code-first.html"><span class="toc-id">23-graphql-code-first</span><span class="toc-title">graphql code first</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/24-serve-static.html"><span class="toc-id">24-serve-static</span><span class="toc-title">serve static</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/25-dynamic-modules.html"><span class="toc-id">25-dynamic-modules</span><span class="toc-title">dynamic modules</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/26-queues.html"><span class="toc-id">26-queues</span><span class="toc-title">queues</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/27-scheduling.html"><span class="toc-id">27-scheduling</span><span class="toc-title">scheduling</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/28-sse.html"><span class="toc-id">28-sse</span><span class="toc-title">sse</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/29-file-upload.html"><span class="toc-id">29-file-upload</span><span class="toc-title">file upload</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/30-event-emitter.html"><span class="toc-id">30-event-emitter</span><span class="toc-title">event emitter</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/31-graphql-federation-code-first.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-title">graphql federation code first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../../samples/31-graphql-federation-code-first/gateway.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub is-active" href="../../samples/31-graphql-federation-code-first/users-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../../samples/31-graphql-federation-code-first/posts-application.html"><span class="toc-id">31-graphql-federation-code-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/32-graphql-federation-schema-first.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-title">graphql federation schema first</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../../samples/32-graphql-federation-schema-first/gateway.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">gateway</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../../samples/32-graphql-federation-schema-first/users-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">users-application</span></a></li>
+<li class="toc-link--sub"><a class="toc-link toc-link--sub" href="../../samples/32-graphql-federation-schema-first/posts-application.html"><span class="toc-id">32-graphql-federation-schema-first</span><span class="toc-sub">posts-application</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/33-graphql-mercurius.html"><span class="toc-id">33-graphql-mercurius</span><span class="toc-title">graphql mercurius</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/34-using-esm-packages.html"><span class="toc-id">34-using-esm-packages</span><span class="toc-title">using esm packages</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/35-use-esm-package-after-node22.html"><span class="toc-id">35-use-esm-package-after-node22</span><span class="toc-title">use esm package after node22</span></a></li>
+<li class=""><a class="toc-link" href="../../samples/36-hmr-esm.html"><span class="toc-id">36-hmr-esm</span><span class="toc-title">hmr esm</span></a></li></ol>
+      </div>
+    </aside>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <main class="site-main" id="top">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span>/</span><span>31-graphql-federation-code-first / users-application</span></nav>
+      
+        <header class="sample-header">
+          <p class="sample-label">31-graphql-federation-code-first / users-application</p>
+          <h1>users-application</h1>
+        </header>
+        
+    <section class="guide-panel" aria-labelledby="guide-heading">
+      <h2 id="guide-heading">Understanding this sample</h2>
+      <p class="guide-note">This page documents a <strong>sub-application</strong> inside sample <code>31-graphql-federation-code-first</code> (part of a multi-service setup such as GraphQL federation). Each sub-app has its own <code>main.ts</code> and module tree.</p>
+      <div class="guide-kind">
+        <p class="guide-kind-label">Standalone HTTP application</p>
+        <p>This sample starts a normal web server. External clients reach it via URLs (browser, curl, mobile app).</p>
+        <p class="guide-why"><strong>When this shape is used:</strong> Best when you expose a REST/JSON API, MVC pages, Swagger, or file uploads from one deployable Node app.</p>
+      </div>
+      <dl class="guide-facts">
+        <div><dt>Bootstrap</dt><dd><code>NestFactory.create(AppModule)</code></dd></div>
+        <div><dt>Inventory kind</dt><dd>HTTP server</dd></div>
+      </dl>
+      <p><strong>Default port:</strong> <code>3002</code></p><p><strong>Also configured:</strong> GraphQL endpoint enabled</p>
+      <p>In the inventory below, <span class="pill pill--wired">Wired</span> (1) means Nest actively loads that class; <span class="pill pill--example">Example</span> (1) means the file is reference-only until you register it in a module or decorator.</p>
+      <p class="guide-more">Related concepts: <a href="../../glossary.html#http-server">application type explained</a> · <a href="../../glossary.html#wired">Wired vs Example</a> · <a href="../../glossary.html#decorator">Why decorators?</a> · <a href="../../glossary.html#section-network">Networking acronyms (TCP, RPC…)</a></p>
+    </section>
+        <div class="markdown-body sample-content"><h1>Users Application — Federation Sample 31</h1>
+<p><strong>Users subgraph</strong> — owns the <code>User</code> entity with <code>@key(fields: &quot;id&quot;)</code>.</p>
+<h2>Quick start</h2>
+<pre><code class="language-bash">cd sample/31-graphql-federation-code-first/users-application
+npm install
+npm run start:dev
+</code></pre>
+<p>GraphQL: <strong><a href="http://localhost:3002/graphql">http://localhost:3002/graphql</a></strong></p>
+<hr>
+<!-- CORE_INVENTORY_START -->
+<h2>Core elements inventory</h2>
+<blockquote>
+<p>Generated from <code>users-application/src</code>. <strong>Wired</strong> = registered in a module or applied globally. <strong>Example</strong> = present in code but not registered.</p>
+</blockquote>
+<h3>Application type</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Bootstrap</strong></td>
+<td><code>NestFactory.create(AppModule)</code></td>
+</tr>
+<tr>
+<td><strong>Kind</strong></td>
+<td>HTTP server</td>
+</tr>
+<tr>
+<td><strong>Entry file</strong></td>
+<td><code>main.ts</code></td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>3002</td>
+</tr>
+</tbody></table></div>
+<p><strong>Stack notes:</strong> GraphQL endpoint enabled</p>
+<h3>Modules (2)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Path</th>
+<th>Imports</th>
+<th>Controllers</th>
+<th>Providers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AppModule</code></td>
+<td><code>src/app.module.ts</code></td>
+<td><code>UsersModule</code></td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>UsersModule</code></td>
+<td><code>src/users/users.module.ts</code></td>
+<td><code>GraphQLModule</code></td>
+<td>—</td>
+<td><code>UsersResolver</code></td>
+</tr>
+</tbody></table></div>
+<h3>Controllers (0)</h3>
+<p><em>None</em></p>
+<h3>GraphQL resolvers (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>UsersResolver</code></td>
+<td><code>src/users/users.resolver.ts</code></td>
+<td><strong>Wired</strong></td>
+</tr>
+</tbody></table></div>
+<h3>Providers / services (1)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Path</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>UsersService</code></td>
+<td><code>src/users/users.service.ts</code></td>
+<td><span class="pill pill--example">Example</span></td>
+</tr>
+</tbody></table></div>
+<h3>Guards (0)</h3>
+<p><em>None</em></p>
+<h3>Interceptors (0)</h3>
+<p><em>None</em></p>
+<h3>Pipes (0)</h3>
+<p><em>None</em></p>
+<h3>Exception filters (0)</h3>
+<p><em>None</em></p>
+<h3>Middleware (0)</h3>
+<p><em>None</em></p>
+<h3>Decorators used (10)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Decorators</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>@nestjs (@nestjs/common)</strong></td>
+<td><code>@Injectable</code>, <code>@Module</code></td>
+</tr>
+<tr>
+<td><strong>@nestjs (@nestjs/graphql)</strong></td>
+<td><code>@Args</code>, <code>@Directive</code>, <code>@Field</code>, <code>@ObjectType</code>, <code>@Query</code>, <code>@ResolveReference</code>, <code>@Resolver</code></td>
+</tr>
+<tr>
+<td><strong>Unknown</strong></td>
+<td><code>@apollo</code></td>
+</tr>
+</tbody></table></div>
+<hr>
+<!-- CORE_INVENTORY_END -->
+<h2>Project structure</h2>
+<pre><code>users-application/
+└── src/
+    ├── main.ts
+    ├── app.module.ts
+    └── users/
+        ├── users.module.ts
+        ├── users.resolver.ts
+        ├── users.service.ts
+        └── models/user.model.ts
+</code></pre>
+<hr>
+<h2>Module graph</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Origin</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AppModule</code></td>
+<td><strong>User</strong></td>
+<td>Imports <code>UsersModule</code></td>
+</tr>
+<tr>
+<td><code>UsersModule</code></td>
+<td><strong>User</strong></td>
+<td>GraphQL federation driver + providers</td>
+</tr>
+<tr>
+<td><code>UsersResolver</code></td>
+<td><strong>User</strong></td>
+<td><code>getUser</code> query + reference resolution</td>
+</tr>
+<tr>
+<td><code>UsersService</code></td>
+<td><strong>User</strong></td>
+<td>In-memory users</td>
+</tr>
+</tbody></table></div>
+<figure class="diagram"><figcaption>Diagram</figcaption><div class="diagram-canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 657.6 137.2" width="657.6" height="137.2" role="img"><rect width="657.6" height="137.2" fill="#333333"></rect><defs><marker id="mermaid-arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d3d3d3"></path></marker><marker id="mermaid-arrow-open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-cross" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 2 2 L 8 8 M 8 2 L 2 8" fill="none" stroke="#d3d3d3" stroke-width="1.5"></path></marker><marker id="mermaid-arrow-circle" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><circle cx="5" cy="5" r="4" fill="#d3d3d3"></circle></marker><linearGradient id="mermaid-grad-default" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-decision" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><linearGradient id="mermaid-grad-rounded" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><radialGradient id="mermaid-grad-circle" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></radialGradient><linearGradient id="mermaid-grad-cylinder" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#555555"></stop><stop offset="100%" stop-color="#3a3a3a"></stop></linearGradient><linearGradient id="mermaid-grad-subroutine" x1="49.99999999999999%" y1="100%" x2="50.00000000000001%" y2="0%"><stop offset="0%" stop-color="#2a2b2b"></stop><stop offset="100%" stop-color="#161717"></stop></linearGradient><filter id="mermaid-shadow-default" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-decision" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-rounded" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-circle" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-cylinder" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter><filter id="mermaid-shadow-subroutine" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="2" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.45)" flood-opacity="1"></feDropShadow></filter></defs><g><path d="M 145.2,32.4 L 205.2,32.4" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path></g><g><path d="M 145.2,46 L 155.2,46 L 155.2,92.8 L 408,92.8" fill="none" stroke="#d3d3d3" stroke-width="1.5" marker-end="url(#mermaid-arrow)"></path><g><rect x="86.94" y="57.84" width="136.51999999999998" height="23.119999999999997" fill="#585858" rx="3" ry="3"></rect><text x="155.2" y="69.4" font-size="12.6" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#cccccc" font-weight="normal" text-anchor="middle" dominant-baseline="central">@ResolveReference</text></g></g><g filter="url(#mermaid-shadow-default)"><rect x="12" y="18.799999999999997" width="133.2" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="78.6" y="39.199999999999996" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">UsersResolver</text></g><g filter="url(#mermaid-shadow-default)"><rect x="205.2" y="12" width="124.80000000000001" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="267.6" y="32.4" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">UsersService</text></g><g filter="url(#mermaid-shadow-default)"><rect x="408" y="72.4" width="225.60000000000002" height="40.8" fill="url(#mermaid-grad-default)" stroke="#cccccc" stroke-width="1.5" rx="5" ry="5"></rect><text x="520.8" y="92.80000000000001" font-size="14" font-family="&quot;trebuchet ms&quot;, verdana, arial, sans-serif" fill="#e0dfdf" font-weight="normal" text-anchor="middle" dominant-baseline="central">Federation entity lookup</text></g></svg></div></figure>
+
+
+
+<hr>
+<h2>Resolver methods</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Decorator</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>getUser(id)</code></td>
+<td><code>@Query</code></td>
+<td>Direct query</td>
+</tr>
+<tr>
+<td><code>resolveReference()</code></td>
+<td><code>@ResolveReference</code></td>
+<td>Load User by federation key</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2>Decorator glossary (<code>@</code>)</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Decorator</th>
+<th>Library</th>
+<th>Used on</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Module</code></td>
+<td><strong>NestJS</strong></td>
+<td>Modules</td>
+</tr>
+<tr>
+<td><code>@Resolver(of =&gt; User)</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>UsersResolver</code></td>
+</tr>
+<tr>
+<td><code>@Query</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>getUser</code></td>
+</tr>
+<tr>
+<td><code>@ResolveReference</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>resolveReference</code></td>
+</tr>
+<tr>
+<td><code>@Args</code></td>
+<td><strong>NestJS</strong></td>
+<td>Query parameter</td>
+</tr>
+<tr>
+<td><code>@ObjectType</code>, <code>@Field</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>User</code> model</td>
+</tr>
+<tr>
+<td><code>@Directive(&#39;@key(fields: &quot;id&quot;)&#39;)</code></td>
+<td><strong>Apollo Federation</strong></td>
+<td><code>User</code></td>
+</tr>
+<tr>
+<td><code>@Injectable</code></td>
+<td><strong>NestJS</strong></td>
+<td><code>UsersService</code></td>
+</tr>
+</tbody></table></div>
+<p><strong>User-created decorators:</strong> none.</p>
+<hr>
+<h2>Dependencies</h2>
+<p><code>@nestjs/graphql</code>, <code>@nestjs/apollo</code>, <code>@apollo/server</code></p>
+</div>
+      
+    <nav class="page-nav" aria-label="Sample pagination">
+      <a class="page-nav-link" href="../../samples/31-graphql-federation-code-first/gateway.html"><span class="page-nav-dir">← Previous</span><span class="page-nav-title">31-graphql-federation-code-first / gateway</span></a>
+      <a class="page-nav-link" href="../../samples/31-graphql-federation-code-first/posts-application.html"><span class="page-nav-dir">Next →</span><span class="page-nav-title">31-graphql-federation-code-first / posts-application</span></a>
+    </nav>
+    </main>
+  </div>
+
+  <a href="#top" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+  <script src="../../assets/guide.js"></script>
+</body>
+</html>
